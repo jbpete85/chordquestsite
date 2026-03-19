@@ -37,8 +37,12 @@ const faqItems = [
         </div>
       </div>
       <div class="hero__mockup">
+        <div class="hero__sheet-music">
+          <img src={`${base}images/sheet-music-ode-to-joy.png`} alt="Ode to Joy sheet music" />
+        </div>
         <div class="hero__phone">
-          <span>iPhone Product Shot</span>
+          <img src={`${base}images/iphone-frame.png`} alt="" class="hero__phone-frame" />
+          <img src={`${base}images/app-screenshot.png`} alt="ChordQuest app showing Ode to Joy with playback controls" class="hero__phone-screen" />
         </div>
       </div>
     </div>
@@ -103,7 +107,10 @@ const faqItems = [
       </div>
       <div class="teachers-strip__mockup">
         <div class="teachers-strip__laptop">
-          <span>MacBook Product Shot</span>
+          <div class="teachers-strip__screen">
+            <img src={`${base}images/app-screenshot.png`} alt="ChordQuest web app interface" />
+          </div>
+          <div class="teachers-strip__hinge"></div>
         </div>
       </div>
     </div>
@@ -189,21 +196,51 @@ const faqItems = [
     flex-wrap: wrap;
   }
   .hero__mockup {
+    position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 460px;
+  }
+  .hero__sheet-music {
+    position: absolute;
+    left: -40px;
+    top: 20px;
+    width: 240px;
+    transform: rotate(-3deg);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
+    z-index: 1;
+  }
+  .hero__sheet-music img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
   .hero__phone {
-    width: 280px;
-    height: 560px;
-    background: var(--color-border-dark);
-    border-radius: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-text-muted);
-    font-size: 14px;
-    font-family: var(--font-mono);
-    border: 2px solid rgba(200, 146, 74, 0.15);
+    position: relative;
+    width: 220px;
+    z-index: 2;
+  }
+  .hero__phone-frame {
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .hero__phone-screen {
+    position: absolute;
+    top: 2.5%;
+    left: 5.5%;
+    width: 89%;
+    height: 95%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 28px;
+    z-index: 1;
   }
 
   /* ===== SOCIAL PROOF ===== */
@@ -311,18 +348,33 @@ const faqItems = [
   }
   .teachers-strip__laptop {
     width: 100%;
-    max-width: 680px;
-    height: 380px;
+    max-width: 700px;
     margin: 0 auto;
-    background: var(--color-border-dark);
-    border-radius: 12px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    color: var(--color-text-muted);
-    font-size: 14px;
-    font-family: var(--font-mono);
-    border: 2px solid rgba(200, 146, 74, 0.15);
+  }
+  .teachers-strip__screen {
+    width: 100%;
+    height: 420px;
+    background: var(--color-border-dark);
+    border-radius: 12px 12px 0 0;
+    border: 3px solid #3D2E1A;
+    border-bottom: none;
+    overflow: hidden;
+  }
+  .teachers-strip__screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .teachers-strip__hinge {
+    width: 110%;
+    max-width: 770px;
+    height: 14px;
+    background: linear-gradient(180deg, #3D2E1A 0%, #2A1F12 100%);
+    border-radius: 0 0 4px 4px;
   }
 
   /* ===== FOR PARENTS STRIP ===== */
