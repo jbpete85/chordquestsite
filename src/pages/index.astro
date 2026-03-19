@@ -37,6 +37,9 @@ const faqItems = [
         </div>
       </div>
       <div class="hero__mockup">
+        <div class="hero__shape hero__shape--1"></div>
+        <div class="hero__shape hero__shape--2"></div>
+        <div class="hero__shape hero__shape--3"></div>
         <img src={`${base}images/iphone-mockup.png`} alt="ChordQuest app on iPhone 17 Pro showing sheet music playback" class="hero__device" />
       </div>
     </div>
@@ -193,8 +196,59 @@ const faqItems = [
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+  }
+  .hero__shape {
+    position: absolute;
+    border-radius: 32px;
+    z-index: 0;
+  }
+  .hero__shape--1 {
+    width: 320px;
+    height: 380px;
+    background-color: #C8924A;
+    opacity: 0.25;
+    top: -20px;
+    right: -60px;
+    transform: rotate(-8deg);
+    animation: float-1 8s ease-in-out infinite;
+  }
+  .hero__shape--2 {
+    width: 220px;
+    height: 280px;
+    background-color: #D9B077;
+    opacity: 0.18;
+    bottom: 20px;
+    left: -40px;
+    border-radius: 40px;
+    transform: rotate(12deg);
+    animation: float-2 10s ease-in-out infinite;
+  }
+  .hero__shape--3 {
+    width: 140px;
+    height: 140px;
+    background-color: #C8924A;
+    opacity: 0.12;
+    top: 60%;
+    right: 10%;
+    border-radius: 50%;
+    animation: float-3 6s ease-in-out infinite;
+  }
+  @keyframes float-1 {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(-6deg) translateY(-14px); }
+  }
+  @keyframes float-2 {
+    0%, 100% { transform: rotate(12deg) translateX(0); }
+    50% { transform: rotate(10deg) translateX(10px) translateY(-8px); }
+  }
+  @keyframes float-3 {
+    0%, 100% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.08) translateY(-10px); }
   }
   .hero__device {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 280px;
     height: auto;
