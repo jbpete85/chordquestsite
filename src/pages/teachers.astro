@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const teacherFaqItems = [
+  {
+    question: 'Is ChordQuest really free for music teachers?',
+    answer: 'Yes. Teachers download and use ChordQuest free, forever. There is no trial, no expiration, and no catch. Students pay a small monthly subscription — teachers never pay a cent.',
+  },
+  {
+    question: 'What sheet music does ChordQuest work with?',
+    answer: 'Any standard staff notation — Faber, Hal Leonard, Alfred, Suzuki, Henle, RCM, handwritten charts. ChordQuest reads directly from a photo of the page, so it works with any publisher and any edition.',
+  },
+  {
+    question: 'Does ChordQuest replace my teaching method?',
+    answer: "No. ChordQuest doesn't require a new curriculum, new workflow, or new repertoire. It works alongside whatever you already do — it just fixes what happens at home between lessons.",
+  },
+  {
+    question: 'How do I share ChordQuest with my students?',
+    answer: 'Send one link. Your students download the app, set up in seconds, and start hearing their music at home. One send covers your whole studio.',
+  },
+  {
+    question: 'What makes ChordQuest different from other apps?',
+    answer: 'Most sheet music apps require you to search their library and hope your song is in it. ChordQuest works from a photo of whatever sheet music you already have — any publisher, any instrument, instantly.',
+  },
+];
+
+const features = [
+  {
+    title: 'Any sheet music',
+    body: "ChordQuest reads directly from your student's sheet music. Whatever you assign, ChordQuest reads it. No library limitations.",
+  },
+  {
+    title: '60 seconds to set up',
+    body: 'Download the app. Point at sheet music. There is no onboarding process, no curriculum to configure.',
+  },
+  {
+    title: 'Nothing changes',
+    body: "Your repertoire stays yours. Your methods stay yours. ChordQuest doesn't replace your teaching, it works alongside it.",
+  },
+  {
+    title: 'Free for you. Forever.',
+    body: 'Teachers download free. Students pay a small subscription. We never charge you for it.',
+  },
+  {
+    title: 'Any instrument',
+    body: 'Standard staff notation for piano and guitar, and dozens of other instruments.',
+  },
+  {
+    title: 'Share with your class',
+    body: 'Send one link to your students. They download, set up in seconds, and start hearing their music at home.',
+  },
+];
+---
+<BaseLayout title="For Teachers — ChordQuest" description="Free for music teachers forever. Give every student instant playback of their exact part from any sheet music.">
+
+  <!-- ===== HERO ===== -->
+  <section class="t-hero">
+    <div class="container container--narrow t-hero__inner">
+      <p class="eyebrow">For Music Teachers</p>
+      <h1 class="headline-xl t-hero__headline">You teach the music. Let ChordQuest take care of the practice.</h1>
+      <p class="body-lg t-hero__sub">Your students hear their exact part from any piece of sheet music before or after the lesson, so you spend your time teaching expression, technique, and musicality instead of re-teaching notes.</p>
+      <a href="#" class="btn btn--gold">Teachers Download Free</a>
+    </div>
+  </section>
+
+  <!-- ===== PAIN VS RELIEF ===== -->
+  <section class="pain-relief section">
+    <div class="container">
+      <div class="pain-relief__grid">
+        <div class="pain-relief__card pain-relief__card--problem">
+          <span class="pain-relief__label">The Problem</span>
+          <h3 class="headline-sm pain-relief__title">A student sits down, opens their book, and clearly hasn't heard the piece since last week.</h3>
+          <p class="body-md text-warm">You spend 30 minutes re-teaching what practice should have covered. It happens every Tuesday. Every Thursday. Every lesson with every student who can't hear their part in their head.</p>
+        </div>
+        <div class="pain-relief__card pain-relief__card--relief">
+          <span class="pain-relief__label pain-relief__label--gold">The Relief</span>
+          <h3 class="headline-sm pain-relief__title pain-relief__title--light">They hear it at home. You teach it at the lesson.</h3>
+          <p class="body-md pain-relief__body--light">ChordQuest gives your students instant playback of any sheet music you assign. They point their phone, tap play, and hear their exact part. When they walk in, they're ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURE GRID ===== -->
+  <section class="features section">
+    <div class="container">
+      <h2 class="headline-lg features__headline">Built around how you actually work.</h2>
+      <div class="features__grid">
+        {features.map((f) => (
+          <div class="feature-card">
+            <h3 class="feature-card__title">{f.title}</h3>
+            <p class="feature-card__body">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEACHER FAQ ===== -->
+  <section class="t-faq section" id="faq">
+    <div class="container container--narrow">
+      <h2 class="headline-md t-faq__headline">Questions teachers ask.</h2>
+      <FaqAccordion items={teacherFaqItems} />
+    </div>
+  </section>
+
+  <!-- ===== CLOSING ===== -->
+  <section class="t-closing section">
+    <div class="container container--narrow t-closing__inner">
+      <p class="eyebrow">The Last Thing</p>
+      <h2 class="headline-lg t-closing__headline">Don't change how you teach.</h2>
+      <p class="t-closing__subline">Change what happens between lessons.</p>
+      <p class="body-lg t-closing__body">ChordQuest isn't a replacement for the magic that happens in the classroom. It's a tool to keep your students invested in their musical journey with you.</p>
+      <a href="#" class="btn btn--gold">Teachers Download Free</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .t-hero {
+    background-color: var(--color-dark);
+    padding: 96px 0 112px;
+    text-align: center;
+  }
+  .t-hero__headline {
+    color: var(--color-cream);
+    margin-bottom: 24px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .t-hero__sub {
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== PAIN VS RELIEF ===== */
+  .pain-relief {
+    background-color: var(--color-card-bg);
+  }
+  .pain-relief__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .pain-relief__card {
+    padding: 48px 40px;
+    border-radius: 16px;
+  }
+  .pain-relief__card--problem {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
+  }
+  .pain-relief__card--relief {
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-border-dark);
+  }
+  .pain-relief__label {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+  }
+  .pain-relief__label--gold {
+    color: var(--color-gold);
+  }
+  .pain-relief__title {
+    margin-bottom: 16px;
+  }
+  .pain-relief__title--light {
+    color: var(--color-cream);
+  }
+  .pain-relief__body--light {
+    color: var(--color-text-muted);
+  }
+
+  /* ===== FEATURES ===== */
+  .features {
+    background-color: var(--color-dark);
+  }
+  .features__headline {
+    color: var(--color-cream);
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .features__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    border: 1px solid var(--color-border-dark);
+    border-radius: 16px;
+    padding: 36px 32px;
+  }
+  .feature-card__title {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    color: var(--color-cream);
+    margin-bottom: 12px;
+  }
+  .feature-card__body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* ===== TEACHER FAQ ===== */
+  .t-faq {
+    background-color: var(--color-cream);
+  }
+  .t-faq__headline {
+    margin-bottom: 40px;
+  }
+
+  /* ===== CLOSING ===== */
+  .t-closing {
+    background-color: var(--color-dark);
+    text-align: center;
+  }
+  .t-closing__inner {
+    max-width: 640px;
+  }
+  .t-closing__headline {
+    color: var(--color-cream);
+    margin-bottom: 8px;
+  }
+  .t-closing__subline {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--color-gold);
+    margin-bottom: 28px;
+  }
+  .t-closing__body {
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .t-hero {
+      padding: 64px 0 80px;
+    }
+    .pain-relief__grid {
+      grid-template-columns: 1fr;
+    }
+    .pain-relief__card {
+      padding: 36px 28px;
+    }
+    .features__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+---
+<div class="faq-accordion">
+  {items.map((item) => (
+    <details class="faq-item">
+      <summary class="faq-question">{item.question}</summary>
+      <div class="faq-answer">
+        <p>{item.answer}</p>
+      </div>
+    </details>
+  ))}
+</div>
+
+<style>
+  .faq-accordion {
+    width: 100%;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .faq-item[open] .faq-question::after {
+    transform: rotate(45deg);
+  }
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 0;
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-dark);
+    cursor: pointer;
+    list-style: none;
+    gap: 16px;
+  }
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+  .faq-question::after {
+    content: '+';
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--color-gold);
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+  .faq-answer {
+    padding: 0 0 24px;
+  }
+  .faq-answer p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-warm);
+    max-width: 680px;
+  }
+</style>

@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const parentFaqItems = [
+  {
+    question: 'How much does it cost?',
+    answer: "The app is free to download. Students access full features with a small monthly subscription. Your child's teacher uses ChordQuest free.",
+  },
+  {
+    question: 'What devices does it work on?',
+    answer: 'iPhone and iPad running iOS 16 or later. An Android version is planned.',
+  },
+  {
+    question: 'Does it work with any sheet music?',
+    answer: "ChordQuest works best with clearly printed, standard notation from any publisher. If your teacher assigns it, ChordQuest can play it back.",
+  },
+  {
+    question: 'Can my child isolate just their part?',
+    answer: 'Yes. They can mute and hear different staves independently — perfect for focusing on exactly what they need to practice.',
+  },
+  {
+    question: 'Does my child need an account?',
+    answer: 'They can try it immediately without creating an account. A simple sign-up is required for the full subscription.',
+  },
+  {
+    question: 'Is this a replacement for lessons?',
+    answer: "No. ChordQuest helps students practice between lessons. It makes their teacher's instruction more effective — not less necessary.",
+  },
+  {
+    question: 'What if the playback sounds wrong?',
+    answer: 'It may be a recognition issue. Try uploading the score again or using a clearer photo. Accuracy continues to improve with every update.',
+  },
+];
+---
+<BaseLayout title="For Parents — ChordQuest" description="Your teacher recommended ChordQuest. Practice goes from hard to fun when they know what their music is supposed to sound like.">
+
+  <!-- ===== HERO ===== -->
+  <section class="p-hero">
+    <div class="container container--narrow p-hero__inner">
+      <p class="eyebrow">Your teacher recommended ChordQuest</p>
+      <h1 class="headline-xl p-hero__headline">The kids who stick with it are the ones who feel like they get it.</h1>
+      <p class="body-lg p-hero__sub">Practice goes from hard to fun when they know what their music is supposed to sound like. ChordQuest reads their sheet music, then plays their exact part from any piece of music. No musical knowledge required from parents.</p>
+      <a href="#" class="btn btn--gold">Download on App Store</a>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="p-how section">
+    <div class="container">
+      <div class="p-how__grid">
+        <div class="p-how__card">
+          <span class="p-how__num">1</span>
+          <h3 class="p-how__title">Open the app</h3>
+          <p class="p-how__body">Download ChordQuest on your iPhone or iPad or open the web app on your computer.</p>
+        </div>
+        <div class="p-how__card">
+          <span class="p-how__num">2</span>
+          <h3 class="p-how__title">Upload your music</h3>
+          <p class="p-how__body">Take a picture of any sheet music or use our upload feature if it's a digital copy.</p>
+        </div>
+        <div class="p-how__card">
+          <span class="p-how__num">3</span>
+          <h3 class="p-how__title">Tap play</h3>
+          <p class="p-how__body">Hear your exact part played back. Listen as many times as you need before practicing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARENT FAQ ===== -->
+  <section class="p-faq section" id="faq">
+    <div class="container container--narrow">
+      <h2 class="headline-md p-faq__headline">Questions you probably have.</h2>
+      <p class="body-md text-warm p-faq__intro">Everything you need to know before your child downloads.</p>
+      <FaqAccordion items={parentFaqItems} />
+    </div>
+  </section>
+
+  <!-- ===== CLOSING ===== -->
+  <section class="p-closing section">
+    <div class="container container--narrow p-closing__inner">
+      <h2 class="headline-lg p-closing__headline">Confidence is the goal. Yours and theirs.</h2>
+      <p class="body-lg p-closing__body">Research shows that retention improves when kids can hear their music before they practice it. ChordQuest builds more confident students and empowers parents to support their musical journey.</p>
+      <a href="#" class="btn btn--gold">Download ChordQuest Free</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .p-hero {
+    background-color: var(--color-dark);
+    padding: 96px 0 112px;
+    text-align: center;
+  }
+  .p-hero__headline {
+    color: var(--color-cream);
+    margin-bottom: 24px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .p-hero__sub {
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .p-how {
+    background-color: var(--color-cream);
+  }
+  .p-how__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .p-how__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: 16px;
+    padding: 40px 32px;
+  }
+  .p-how__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .p-how__title {
+    font-family: var(--font-headline);
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--color-dark);
+  }
+  .p-how__body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-warm);
+  }
+
+  /* ===== FAQ ===== */
+  .p-faq {
+    background-color: var(--color-card-bg);
+  }
+  .p-faq__headline {
+    margin-bottom: 8px;
+  }
+  .p-faq__intro {
+    margin-bottom: 40px;
+  }
+
+  /* ===== CLOSING ===== */
+  .p-closing {
+    background-color: var(--color-dark);
+    text-align: center;
+  }
+  .p-closing__inner {
+    max-width: 640px;
+  }
+  .p-closing__headline {
+    color: var(--color-cream);
+    margin-bottom: 24px;
+  }
+  .p-closing__body {
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .p-hero {
+      padding: 64px 0 80px;
+    }
+    .p-how__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

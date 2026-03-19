@@ -1,0 +1,443 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const faqItems = [
+  {
+    question: 'What is ChordQuest?',
+    answer: 'ChordQuest is an interactive music learning app that turns physical sheet music into playable audio. Snap a photo or upload a score to hear your part, control tempo, and practice with confidence.',
+  },
+  {
+    question: 'Does it work with any sheet music?',
+    answer: 'ChordQuest works best with clearly printed, standard notation. Clean PDFs produce the most accurate results. Handwritten music or low-quality photos may reduce accuracy.',
+  },
+  {
+    question: 'Can I isolate just my part?',
+    answer: 'Yes. You can mute and hear staves independently. True individual part isolation is on our development roadmap.',
+  },
+  {
+    question: 'Is this meant to replace lessons?',
+    answer: 'No. ChordQuest supports teachers by reinforcing productive practice between lessons, helping students practice more independently.',
+  },
+];
+---
+<BaseLayout>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow">For Music Teachers &amp; Students &middot; iOS &middot; Free Download</p>
+        <h1 class="headline-xl hero__headline">Any Sheet Music. Any Instrument. Hear And Play Back Instantly.</h1>
+        <p class="body-lg hero__sub">Upload or snap a pic of any piece of sheet music. ChordQuest reads the notes and plays back your exact part in seconds&nbsp;&mdash; no library to search, no instrument limitations, no guessing how it goes.</p>
+        <div class="hero__ctas">
+          <a href="#" class="btn btn--gold">Get Started Free</a>
+          <a href="#" class="btn btn--outline">Watch It Work &rarr;</a>
+        </div>
+      </div>
+      <div class="hero__mockup">
+        <div class="hero__phone">
+          <span>iPhone Product Shot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF BAR ===== -->
+  <section class="social-proof">
+    <div class="container social-proof__inner">
+      <span>&starf;&starf;&starf;&starf;&starf; Recommended by private teachers</span>
+      <span class="social-proof__divider"></span>
+      <span>Free for teachers</span>
+      <span class="social-proof__divider"></span>
+      <span>iOS &middot; iPhone &amp; iPad</span>
+      <span class="social-proof__divider"></span>
+      <span>Piano &middot; Guitar &middot; More coming</span>
+    </div>
+  </section>
+
+  <!-- ===== ENTITY BLOCK ===== -->
+  <section class="entity">
+    <div class="container container--narrow">
+      <p class="entity__text">ChordQuest is a free app for music students and teachers that turns any photo of sheet music into instant playback. Students hear their exact part&nbsp;&mdash; on any instrument&nbsp;&mdash; before they practice it. Free for teachers forever. Student subscriptions are free for the first 7 days, then only $4.99/month after.</p>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="how-it-works section">
+    <div class="container">
+      <div class="how-it-works__header">
+        <p class="eyebrow">How It Works</p>
+        <h2 class="headline-lg">Capture The Music. Master Your Part.</h2>
+        <p class="body-lg text-warm how-it-works__sub">No more searching libraries, hoping to find the song and instrument you need. ChordQuest reads directly from your sheet music. Any publisher, any edition.</p>
+      </div>
+      <div class="how-it-works__grid">
+        <div class="step-card">
+          <span class="step-card__num">1</span>
+          <h3 class="step-card__title">Point Your Camera</h3>
+          <p class="step-card__body">Scan or upload any piece of music you're working on.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">2</span>
+          <h3 class="step-card__title">It Reads Every Note</h3>
+          <p class="step-card__body">Treble, bass, chords, and dynamics, all recognized instantly from the scan. Not pulled from a database, but read from the actual music in front of you.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-card__num">3</span>
+          <h3 class="step-card__title">Hear the Exact Part</h3>
+          <p class="step-card__body">Hear your notes isolated or as part of the full ensemble. Listen to and practice exactly what you need.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOR TEACHERS STRIP ===== -->
+  <section class="teachers-strip section">
+    <div class="container">
+      <div class="teachers-strip__content">
+        <p class="eyebrow">For Teachers</p>
+        <h2 class="headline-lg teachers-strip__headline">The between-lesson practice tool music teachers recommend.</h2>
+        <p class="body-lg teachers-strip__body">Give every student in your class instant playback of their exact part using the sheet music they already own. They come prepared, letting you teach the perfect lesson!</p>
+        <a href={`${base}teachers`} class="btn btn--gold">Teachers Download Free</a>
+      </div>
+      <div class="teachers-strip__mockup">
+        <div class="teachers-strip__laptop">
+          <span>MacBook Product Shot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOR PARENTS STRIP ===== -->
+  <section class="parents-strip section">
+    <div class="container parents-strip__inner">
+      <div class="parents-strip__decor">
+        <div class="parents-strip__graphic">
+          <svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line x1="20" y1="60" x2="180" y2="60" stroke="#C8924A" stroke-opacity="0.15" stroke-width="1"/>
+            <line x1="20" y1="75" x2="180" y2="75" stroke="#C8924A" stroke-opacity="0.15" stroke-width="1"/>
+            <line x1="20" y1="90" x2="180" y2="90" stroke="#C8924A" stroke-opacity="0.15" stroke-width="1"/>
+            <line x1="20" y1="105" x2="180" y2="105" stroke="#C8924A" stroke-opacity="0.15" stroke-width="1"/>
+            <line x1="20" y1="120" x2="180" y2="120" stroke="#C8924A" stroke-opacity="0.15" stroke-width="1"/>
+            <circle cx="70" cy="82" r="6" fill="#C8924A" fill-opacity="0.12"/>
+            <circle cx="110" cy="97" r="6" fill="#C8924A" fill-opacity="0.12"/>
+            <circle cx="140" cy="67" r="6" fill="#C8924A" fill-opacity="0.12"/>
+            <line x1="20" y1="170" x2="180" y2="170" stroke="#C8924A" stroke-opacity="0.1" stroke-width="1"/>
+            <line x1="20" y1="185" x2="180" y2="185" stroke="#C8924A" stroke-opacity="0.1" stroke-width="1"/>
+            <line x1="20" y1="200" x2="180" y2="200" stroke="#C8924A" stroke-opacity="0.1" stroke-width="1"/>
+            <line x1="20" y1="215" x2="180" y2="215" stroke="#C8924A" stroke-opacity="0.1" stroke-width="1"/>
+            <line x1="20" y1="230" x2="180" y2="230" stroke="#C8924A" stroke-opacity="0.1" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+      <div class="parents-strip__content">
+        <p class="eyebrow">For Parents</p>
+        <h2 class="headline-lg">No Music Background? No Time? No Problem.</h2>
+        <p class="body-lg text-warm">When students know what their part should sound like, learning music becomes more productive, and far less frustrating. With ChordQuest's sheet music playback technology, parents can confidently support their child's practice without preparation or needing to know how to read a single note.</p>
+        <p class="body-lg text-warm parents-strip__note">One subscription for $4.99 covers the whole family too.</p>
+        <a href={`${base}parents`} class="btn btn--gold">Try For Free</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq section--sm" id="faq">
+    <div class="container container--narrow">
+      <h2 class="headline-md faq__headline">Frequently Asked Questions</h2>
+      <FaqAccordion items={faqItems} />
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="final-cta section">
+    <div class="final-cta__lines" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="container container--narrow final-cta__inner">
+      <h2 class="headline-lg final-cta__headline">The difference between a student who practiced and one who didn't is obvious the second they sit down.</h2>
+      <p class="body-lg final-cta__sub">Every student deserves to walk in prepared. Every teacher deserves to teach the good stuff.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero {
+    background-color: var(--color-dark);
+    padding: 80px 0 96px;
+    overflow: hidden;
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero__headline {
+    color: var(--color-cream);
+    margin-bottom: 24px;
+  }
+  .hero__sub {
+    color: var(--color-text-muted);
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+  .hero__ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero__mockup {
+    display: flex;
+    justify-content: center;
+  }
+  .hero__phone {
+    width: 280px;
+    height: 560px;
+    background: var(--color-border-dark);
+    border-radius: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-family: var(--font-mono);
+    border: 2px solid rgba(200, 146, 74, 0.15);
+  }
+
+  /* ===== SOCIAL PROOF ===== */
+  .social-proof {
+    background-color: var(--color-social-proof-bg);
+    padding: 18px 0;
+  }
+  .social-proof__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+  }
+  .social-proof__divider {
+    width: 1px;
+    height: 14px;
+    background-color: rgba(200, 146, 74, 0.2);
+  }
+
+  /* ===== ENTITY ===== */
+  .entity {
+    background-color: var(--color-dark);
+    padding: 64px 0;
+  }
+  .entity__text {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .how-it-works {
+    background-color: var(--color-cream);
+  }
+  .how-it-works__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 64px;
+  }
+  .how-it-works__sub {
+    margin-top: 20px;
+  }
+  .how-it-works__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .step-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: 16px;
+    padding: 40px 32px;
+  }
+  .step-card__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .step-card__title {
+    font-family: var(--font-headline);
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--color-dark);
+  }
+  .step-card__body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-warm);
+  }
+
+  /* ===== FOR TEACHERS STRIP ===== */
+  .teachers-strip {
+    background-color: var(--color-dark);
+  }
+  .teachers-strip .container {
+    text-align: center;
+    max-width: 720px;
+  }
+  .teachers-strip__headline {
+    color: var(--color-cream);
+    margin-bottom: 20px;
+  }
+  .teachers-strip__body {
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+  }
+  .teachers-strip__mockup {
+    margin-top: 64px;
+  }
+  .teachers-strip__laptop {
+    width: 100%;
+    max-width: 680px;
+    height: 380px;
+    margin: 0 auto;
+    background: var(--color-border-dark);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    font-family: var(--font-mono);
+    border: 2px solid rgba(200, 146, 74, 0.15);
+  }
+
+  /* ===== FOR PARENTS STRIP ===== */
+  .parents-strip {
+    background-color: var(--color-card-bg);
+  }
+  .parents-strip__inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .parents-strip__decor {
+    position: relative;
+  }
+  .parents-strip__graphic {
+    width: 100%;
+    max-width: 200px;
+    opacity: 0.8;
+  }
+  .parents-strip__graphic svg {
+    width: 100%;
+    height: auto;
+  }
+  .parents-strip__content {
+    max-width: 600px;
+  }
+  .parents-strip__content .headline-lg {
+    margin-bottom: 24px;
+  }
+  .parents-strip__content .body-lg {
+    margin-bottom: 16px;
+  }
+  .parents-strip__note {
+    font-weight: 600;
+    margin-bottom: 32px !important;
+  }
+
+  /* ===== FAQ ===== */
+  .faq {
+    background-color: var(--color-card-bg);
+    padding-bottom: 96px;
+  }
+  .faq__headline {
+    margin-bottom: 40px;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    background-color: var(--color-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta__lines {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    pointer-events: none;
+  }
+  .final-cta__lines span {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: rgba(200, 146, 74, 0.06);
+  }
+  .final-cta__inner {
+    position: relative;
+    text-align: center;
+  }
+  .final-cta__headline {
+    color: var(--color-cream);
+    margin-bottom: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .final-cta__sub {
+    color: var(--color-text-muted);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 48px 0 64px;
+    }
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .hero__phone {
+      width: 220px;
+      height: 440px;
+    }
+    .how-it-works__grid {
+      grid-template-columns: 1fr;
+    }
+    .parents-strip__inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .parents-strip__decor {
+      display: none;
+    }
+    .social-proof__divider {
+      display: none;
+    }
+    .social-proof__inner {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+</style>
