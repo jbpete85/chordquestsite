@@ -4,8 +4,34 @@ const base = import.meta.env.BASE_URL;
 ---
 <footer class="footer">
   <div class="footer__inner container">
-    <a href={base} class="footer__logo">ChordQuest</a>
-    <p class="footer__copy">&copy; {year} ChordQuest. Argyle, TX.</p>
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a href={base} class="footer__logo">ChordQuest</a>
+        <p class="footer__tagline">Any sheet music. Any instrument. Heard instantly.</p>
+      </div>
+      <div class="footer__columns">
+        <div class="footer__col">
+          <h4 class="footer__col-title">Pages</h4>
+          <a href={base} class="footer__link">Home</a>
+          <a href={`${base}teachers`} class="footer__link">For Teachers</a>
+          <a href={`${base}parents`} class="footer__link">For Parents</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Resources</h4>
+          <a href="#faq" class="footer__link">FAQ</a>
+          <a href="#contact" class="footer__link">Contact Us</a>
+          <a href="https://app.chordquestmusic.com" class="footer__link">Launch App</a>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Get Started</h4>
+          <a href="https://app.chordquestmusic.com" class="btn btn--gold footer__cta">Download Free</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; {year} ChordQuest Music. All rights reserved.</p>
+      <p class="footer__location">Argyle, TX</p>
+    </div>
   </div>
 </footer>
 
@@ -13,27 +39,88 @@ const base = import.meta.env.BASE_URL;
   .footer {
     background-color: var(--color-dark);
     border-top: 1px solid var(--color-border-dark);
-    padding: 40px 0;
+    padding: 64px 0 32px;
   }
-  .footer__inner {
+  .footer__top {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    gap: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--color-border-dark);
+  }
+  .footer__brand {
+    max-width: 280px;
   }
   .footer__logo {
     font-family: var(--font-headline);
-    font-size: 18px;
+    font-size: 22px;
     color: var(--color-cream);
     text-decoration: none;
   }
-  .footer__copy {
-    font-size: 13px;
+  .footer__tagline {
+    font-size: 14px;
+    line-height: 160%;
     color: var(--color-text-muted);
+    margin-top: 12px;
   }
+  .footer__columns {
+    display: flex;
+    gap: 64px;
+  }
+  .footer__col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer__col-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+  .footer__link {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer__link:hover {
+    color: var(--color-cream);
+  }
+  .footer__cta {
+    margin-top: 4px;
+    padding: 10px 20px;
+    font-size: 13px;
+    text-align: center;
+  }
+  .footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+  }
+  .footer__copy,
+  .footer__location {
+    font-size: 12px;
+    color: rgba(138, 114, 96, 0.6);
+  }
+
   @media (max-width: 768px) {
-    .footer__inner {
+    .footer__top {
       flex-direction: column;
-      gap: 12px;
+      gap: 40px;
+    }
+    .footer__columns {
+      flex-direction: column;
+      gap: 32px;
+    }
+    .footer__bottom {
+      flex-direction: column;
+      gap: 8px;
       text-align: center;
     }
   }
