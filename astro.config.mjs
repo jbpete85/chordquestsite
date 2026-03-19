@@ -6,6 +6,6 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jbpete85.github.io',
-  base: '/chordquestsite',
+  base: '/chordquestsite/',
   integrations: [react()]
 });
