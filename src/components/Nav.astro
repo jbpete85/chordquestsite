@@ -3,7 +3,7 @@ const base = import.meta.env.BASE_URL;
 ---
 <nav class="nav">
   <div class="nav__inner container">
-    <a href={base} class="nav__logo">ChordQuest</a>
+    <a href={base} class="nav__logo"><img src={`${base}images/logo.png`} alt="ChordQuest" class="nav__logo-img" /></a>
     <div class="nav__links">
       <a href={`${base}teachers`} class="nav__link">For Teachers</a>
       <a href={`${base}parents`} class="nav__link">For Parents</a>
@@ -40,10 +40,13 @@ const base = import.meta.env.BASE_URL;
     height: 72px;
   }
   .nav__logo {
-    font-family: var(--font-headline);
-    font-size: 22px;
-    color: var(--color-cream);
+    display: flex;
+    align-items: center;
     text-decoration: none;
+  }
+  .nav__logo-img {
+    height: 52px;
+    width: auto;
   }
   .nav__links {
     display: flex;
