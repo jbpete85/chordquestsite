@@ -37,13 +37,7 @@ const faqItems = [
         </div>
       </div>
       <div class="hero__mockup">
-        <div class="hero__sheet-music">
-          <img src={`${base}images/sheet-music-ode-to-joy.png`} alt="Ode to Joy sheet music" />
-        </div>
-        <div class="hero__phone">
-          <img src={`${base}images/iphone-frame.png`} alt="" class="hero__phone-frame" />
-          <img src={`${base}images/app-screenshot.png`} alt="ChordQuest app showing Ode to Joy with playback controls" class="hero__phone-screen" />
-        </div>
+        <img src={`${base}images/iphone-mockup.png`} alt="ChordQuest app on iPhone 17 Pro showing sheet music playback" class="hero__device" />
       </div>
     </div>
   </section>
@@ -196,51 +190,15 @@ const faqItems = [
     flex-wrap: wrap;
   }
   .hero__mockup {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 460px;
   }
-  .hero__sheet-music {
-    position: absolute;
-    left: -40px;
-    top: 20px;
-    width: 240px;
-    transform: rotate(-3deg);
-    border-radius: 4px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.08);
-    z-index: 1;
-  }
-  .hero__sheet-music img {
+  .hero__device {
     width: 100%;
+    max-width: 420px;
     height: auto;
-    display: block;
-  }
-  .hero__phone {
-    position: relative;
-    width: 220px;
-    z-index: 2;
-  }
-  .hero__phone-frame {
-    width: 100%;
-    height: auto;
-    display: block;
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .hero__phone-screen {
-    position: absolute;
-    top: 2.5%;
-    left: 5.5%;
-    width: 89%;
-    height: 95%;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 28px;
-    z-index: 1;
+    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
   }
 
   /* ===== SOCIAL PROOF ===== */
@@ -469,9 +427,8 @@ const faqItems = [
       grid-template-columns: 1fr;
       gap: 48px;
     }
-    .hero__phone {
-      width: 220px;
-      height: 440px;
+    .hero__device {
+      max-width: 280px;
     }
     .how-it-works__grid {
       grid-template-columns: 1fr;
