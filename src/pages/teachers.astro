@@ -54,7 +54,7 @@ const features = [
   },
 ];
 ---
-<BaseLayout title="For Teachers — ChordQuest" description="Free for music teachers forever. Give every student instant playback of their exact part from any sheet music.">
+<BaseLayout title="For Teachers — ChordQuest" description="Free for music teachers forever. Give every student instant playback of their exact part from any sheet music." hideContactForm={true}>
 
   <!-- ===== HERO ===== -->
   <section class="t-hero">
@@ -117,6 +117,41 @@ const features = [
       <p class="t-closing__subline">Change what happens between lessons.</p>
       <p class="body-lg t-closing__body">ChordQuest isn't a replacement for the magic that happens in the classroom. It's a tool to keep your students invested in their musical journey with you.</p>
       <a href="https://app.chordquestmusic.com" class="btn btn--gold">Teachers Download Free</a>
+    </div>
+  </section>
+
+  <!-- ===== TEACHER CONTACT FORM ===== -->
+  <section class="contact section" id="contact">
+    <div class="container container--narrow">
+      <p class="eyebrow">Free Forever for Teachers</p>
+      <h2 class="headline-lg contact__headline">Claim Your Free ChordQuest License Today</h2>
+      <p class="body-md contact__sub">Tell us about your studio and we'll reach out to get you set up.</p>
+      <form class="contact__form" action="https://formsubmit.co/hello@chordquestmusic.com" method="POST">
+        <input type="hidden" name="_subject" value="Teacher Free License Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://jbpete85.github.io/chordquestsite/teachers">
+        <div class="contact__row">
+          <div class="contact__field">
+            <label for="contact-name" class="contact__label">Name</label>
+            <input type="text" id="contact-name" name="name" required class="contact__input" placeholder="Your name">
+          </div>
+          <div class="contact__field">
+            <label for="contact-email" class="contact__label">Email</label>
+            <input type="email" id="contact-email" name="email" required class="contact__input" placeholder="you@email.com">
+          </div>
+        </div>
+        <div class="contact__field">
+          <label for="contact-students" class="contact__label">How many students do you teach? <span style="font-weight:400; opacity:0.6">(optional)</span></label>
+          <select id="contact-students" name="students" class="contact__input contact__select">
+            <option value="">Select one</option>
+            <option value="1-5">1–5 students</option>
+            <option value="6-15">6–15 students</option>
+            <option value="16-30">16–30 students</option>
+            <option value="30+">30+ students</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn--gold contact__submit">Request Free Access</button>
+      </form>
     </div>
   </section>
 </BaseLayout>
@@ -278,6 +313,76 @@ const features = [
     margin-bottom: 40px;
   }
 
+  /* ===== TEACHER CONTACT FORM ===== */
+  .contact {
+    background-color: var(--color-dark);
+    padding: 100px 0;
+  }
+  .contact__headline {
+    color: var(--color-cream);
+    margin-top: 12px;
+  }
+  .contact__sub {
+    color: var(--color-text-muted);
+    margin-top: 12px;
+    margin-bottom: 40px;
+  }
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+  }
+  .contact__row {
+    display: flex;
+    gap: 20px;
+  }
+  .contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .contact__label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+  .contact__input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-cream);
+    background-color: var(--color-border-dark);
+    border: 1px solid rgba(200, 146, 74, 0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: border-color 0.2s ease;
+    outline: none;
+    width: 100%;
+  }
+  .contact__input::placeholder {
+    color: rgba(138, 114, 96, 0.5);
+  }
+  .contact__input:focus {
+    border-color: var(--color-gold);
+  }
+  .contact__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A7260' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .contact__submit {
+    align-self: flex-start;
+    margin-top: 8px;
+    cursor: pointer;
+    border: none;
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
     .t-hero {
@@ -291,6 +396,9 @@ const features = [
     }
     .features__grid {
       grid-template-columns: 1fr;
+    }
+    .contact__row {
+      flex-direction: column;
     }
   }
 </style>
