@@ -7,11 +7,13 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  hideContactForm?: boolean;
 }
 
 const {
   title = 'ChordQuest — Any Sheet Music. Any Instrument. Hear And Play Back Instantly.',
   description = 'Upload or snap a pic of any piece of sheet music. ChordQuest reads the notes and plays back your exact part in seconds.',
+  hideContactForm = false,
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
@@ -33,7 +35,7 @@ const base = import.meta.env.BASE_URL;
   <main>
     <slot />
   </main>
-  <ContactForm />
+  {!hideContactForm && <ContactForm />}
   <Footer />
 
   <style is:global>
