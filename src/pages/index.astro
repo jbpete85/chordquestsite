@@ -28,54 +28,31 @@ const faqItems = [
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__content">
-        <p class="eyebrow">For Music Teachers &amp; Students &middot; iOS &middot; Free Download</p>
         <h1 class="headline-xl hero__headline">Any Sheet Music.<br/>Any Instrument.<br/>Hear And Play Back Instantly.</h1>
         <p class="body-lg hero__sub">Upload or snap a pic of any piece of sheet music. ChordQuest reads the notes and plays back your exact part in seconds&nbsp;&mdash; no library to search, no instrument limitations, no guessing how it goes.</p>
         <div class="hero__ctas">
           <a href="https://app.chordquestmusic.com" class="btn btn--gold">Get Started Free</a>
-          <a href="#how-it-works" class="btn btn--outline">Watch It Work &rarr;</a>
+          <button class="btn btn--outline" id="watch-it-work-btn">Watch It Work &rarr;</button>
         </div>
       </div>
       <div class="hero__mockup">
-        <div class="hero__shape hero__shape--2"></div>
         <div class="hero__shape hero__shape--1"></div>
-        <img src={`${base}images/iphone-mockup.png`} alt="ChordQuest app on iPhone 17 Pro showing sheet music playback" class="hero__device" />
+        <div class="hero__shape hero__shape--2"></div>
+        <img src={`${base}images/iphone-mockup.png`} alt="ChordQuest app on iPhone showing sheet music playback" class="hero__device" />
       </div>
     </div>
   </section>
 
-  <!-- ===== BRAND STATEMENT + TESTIMONIALS ===== -->
-  <section class="brand-proof">
-    <div class="container container--narrow">
-      <p class="brand-proof__statement">ChordQuest is a free app for music students and teachers that turns any photo of sheet music into instant playback. Students hear their exact part&nbsp;&mdash; on any instrument&nbsp;&mdash; before they practice it. Free for teachers forever. Student subscriptions are free for the first 7 days, then only $4.99/month after.</p>
+  <!-- ===== VIDEO MODAL ===== -->
+  <div class="video-modal" id="video-modal" hidden>
+    <div class="video-modal__backdrop" id="video-modal-backdrop"></div>
+    <div class="video-modal__content">
+      <button class="video-modal__close" id="video-modal-close" aria-label="Close video">&times;</button>
+      <video class="video-modal__player" id="video-modal-player" controls preload="metadata">
+        <source src={`${base}images/sizzle-reel.mp4`} type="video/mp4" />
+      </video>
     </div>
-    <div class="testimonials__track">
-      <div class="testimonials__slide">
-        <blockquote class="testimonials__quote">&ldquo;Chord Quest makes learning music so easy! My students can hear what it's supposed to sound like even when I'm not there, so home practice is so much more beneficial.&rdquo;</blockquote>
-        <p class="testimonials__author"><strong>David</strong> &mdash; Music Teacher</p>
-      </div>
-      <div class="testimonials__slide">
-        <blockquote class="testimonials__quote">&ldquo;I've always wished I had an orchestra in my home to practice with. Chord Quest has now provided that for me.&rdquo;</blockquote>
-        <p class="testimonials__author"><strong>Mei</strong> &mdash; Professional Piano Player</p>
-      </div>
-      <div class="testimonials__slide">
-        <blockquote class="testimonials__quote">&ldquo;Playing with other musicians is so much more enjoyable now! Chord Quest lets us share music easily and practice our parts together.&rdquo;</blockquote>
-        <p class="testimonials__author"><strong>Sarah</strong> &mdash; Choir Director</p>
-      </div>
-      <div class="testimonials__slide">
-        <blockquote class="testimonials__quote">&ldquo;Chord Quest makes learning music so easy! My students can hear what it's supposed to sound like even when I'm not there, so home practice is so much more beneficial.&rdquo;</blockquote>
-        <p class="testimonials__author"><strong>David</strong> &mdash; Music Teacher</p>
-      </div>
-      <div class="testimonials__slide">
-        <blockquote class="testimonials__quote">&ldquo;I've always wished I had an orchestra in my home to practice with. Chord Quest has now provided that for me.&rdquo;</blockquote>
-        <p class="testimonials__author"><strong>Mei</strong> &mdash; Professional Piano Player</p>
-      </div>
-      <div class="testimonials__slide">
-        <blockquote class="testimonials__quote">&ldquo;Playing with other musicians is so much more enjoyable now! Chord Quest lets us share music easily and practice our parts together.&rdquo;</blockquote>
-        <p class="testimonials__author"><strong>Sarah</strong> &mdash; Choir Director</p>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- ===== HOW IT WORKS ===== -->
   <section class="how-it-works section" id="how-it-works">
@@ -183,6 +160,32 @@ const faqItems = [
       );
       playOnceVideos.forEach((video) => videoObserver.observe(video));
     }
+
+    // Video modal
+    const watchBtn = document.getElementById('watch-it-work-btn');
+    const modal = document.getElementById('video-modal');
+    const backdrop = document.getElementById('video-modal-backdrop');
+    const closeBtn = document.getElementById('video-modal-close');
+    const player = document.getElementById('video-modal-player') as HTMLVideoElement;
+
+    function openModal() {
+      modal?.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden';
+      player?.play().catch(() => {});
+    }
+    function closeModal() {
+      modal?.setAttribute('hidden', '');
+      document.body.style.overflow = '';
+      player?.pause();
+      if (player) player.currentTime = 0;
+    }
+
+    watchBtn?.addEventListener('click', openModal);
+    backdrop?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal?.hasAttribute('hidden')) closeModal();
+    });
   </script>
 
   <!-- ===== FOR TEACHERS STRIP ===== -->
@@ -192,10 +195,43 @@ const faqItems = [
         <p class="eyebrow">For Teachers</p>
         <h2 class="headline-lg teachers-strip__headline">The between-lesson practice tool music teachers recommend.</h2>
         <p class="body-lg teachers-strip__body">Give every student in your class instant playback of their exact part using the sheet music they already own. They come prepared, letting you teach the perfect lesson!</p>
-        <a href={`${base}teachers`} class="btn btn--gold">Teachers Download Free</a>
+        <a href={`${base}teachers#contact`} class="btn btn--gold">Teachers Download Free</a>
       </div>
       <div class="teachers-strip__mockup">
         <img src={`${base}images/Product%20Shot.png`} alt="ChordQuest app product screenshot" class="teachers-strip__product-shot" />
+      </div>
+
+      <!-- Testimonial bubbles -->
+      <div class="teachers-strip__testimonials">
+        <div class="testimonial-blob testimonial-blob--1">
+          <svg class="testimonial-blob__shape" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.5,90,-16.3,88.5,-0.9C87,14.5,81.4,29,72.4,41.1C63.4,53.2,51,62.9,37.4,70.3C23.8,77.7,8.9,82.8,-5.2,82.1C-19.3,81.3,-32.6,74.8,-44.8,66.5C-57,58.2,-68.1,48.2,-75.1,35.4C-82.1,22.6,-85,7.1,-83.2,-7.5C-81.4,-22.1,-74.9,-35.8,-65.1,-46.5C-55.3,-57.2,-42.2,-64.9,-28.8,-72.4C-15.4,-79.9,-1.7,-87.2,11.4,-86.4C24.5,-85.6,30.6,-83.6,44.7,-76.4Z" transform="translate(100 100)" />
+          </svg>
+          <div class="testimonial-blob__bubble">
+            <p class="testimonial-blob__quote">&ldquo;My students can hear what it's supposed to sound like even when I'm not there. Home practice is so much more beneficial.&rdquo;</p>
+            <p class="testimonial-blob__author"><strong>David</strong> &mdash; Music Teacher</p>
+          </div>
+        </div>
+
+        <div class="testimonial-blob testimonial-blob--2">
+          <svg class="testimonial-blob__shape" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M39.5,-67.4C51.8,-60.7,63,-51.2,71.5,-39C80,-26.8,85.8,-11.8,84.2,2.2C82.6,16.2,73.6,29.2,63.2,40.3C52.8,51.4,41,60.5,27.7,67.1C14.4,73.7,-0.4,77.8,-15.5,76.8C-30.6,75.8,-46,69.7,-56.3,58.8C-66.6,47.9,-71.8,32.2,-75.4,16C-79,-0.2,-81,-17,-76,-31C-71,-45,-59,-56.2,-45.5,-62.4C-32,-68.6,-17,-69.8,-1.6,-67.1C13.8,-64.4,27.2,-74.1,39.5,-67.4Z" transform="translate(100 100)" />
+          </svg>
+          <div class="testimonial-blob__bubble">
+            <p class="testimonial-blob__quote">&ldquo;I've always wished I had an orchestra in my home to practice with. ChordQuest has now provided that for me.&rdquo;</p>
+            <p class="testimonial-blob__author"><strong>Mei</strong> &mdash; Professional Piano Player</p>
+          </div>
+        </div>
+
+        <div class="testimonial-blob testimonial-blob--3">
+          <svg class="testimonial-blob__shape" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M47.7,-79.1C62.3,-72.3,75,-60.3,82.6,-45.6C90.2,-30.9,92.7,-13.5,90.4,2.6C88.1,18.7,81,33.4,71.1,45.3C61.2,57.2,48.5,66.3,34.7,72.1C20.9,77.9,6,80.4,-8.6,78.6C-23.2,76.8,-37.5,70.7,-49.5,62C-61.5,53.3,-71.2,42,-77.2,28.5C-83.2,15,-85.5,-0.7,-82.3,-15C-79.1,-29.3,-70.4,-42.2,-58.8,-49.8C-47.2,-57.4,-32.7,-59.7,-19.4,-67.4C-6.1,-75.1,6,-88.2,19.6,-89.3C33.2,-90.4,48.3,-79.5,47.7,-79.1Z" transform="translate(100 100)" />
+          </svg>
+          <div class="testimonial-blob__bubble">
+            <p class="testimonial-blob__quote">&ldquo;Playing with other musicians is so much more enjoyable now! ChordQuest lets us share music easily and practice our parts together.&rdquo;</p>
+            <p class="testimonial-blob__author"><strong>Sarah</strong> &mdash; Choir Director</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -329,56 +365,48 @@ const faqItems = [
     filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
   }
 
-  /* ===== BRAND STATEMENT + TESTIMONIALS ===== */
-  .brand-proof {
-    background-color: var(--color-dark);
-    padding: 64px 0;
-    overflow: hidden;
-  }
-  .brand-proof__statement {
-    text-align: center;
-    font-family: var(--font-headline);
-    font-size: 22px;
-    line-height: 1.6;
-    color: var(--color-cream);
-    max-width: 780px;
-    margin: 0 auto 48px;
-  }
-  .testimonials__track {
+  /* ===== VIDEO MODAL ===== */
+  .video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
     display: flex;
-    gap: 32px;
-    animation: scroll-left 30s linear infinite;
-    width: max-content;
+    align-items: center;
+    justify-content: center;
   }
-  .testimonials__track:hover {
-    animation-play-state: paused;
+  .video-modal[hidden] {
+    display: none;
   }
-  .testimonials__slide {
-    flex-shrink: 0;
-    width: 400px;
-    padding: 32px;
-    background-color: rgba(200, 146, 74, 0.08);
-    border-radius: 16px;
-    border: 1px solid rgba(200, 146, 74, 0.15);
+  .video-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
   }
-  .testimonials__quote {
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.7;
+  .video-modal__content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+  }
+  .video-modal__close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
     color: var(--color-cream);
-    margin: 0;
+    font-size: 32px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    line-height: 1;
   }
-  .testimonials__author {
-    margin-top: 16px;
-    font-size: 14px;
-    color: var(--color-text-muted);
+  .video-modal__close:hover {
+    opacity: 1;
   }
-  .testimonials__author strong {
-    color: var(--color-gold-light);
-  }
-  @keyframes scroll-left {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .video-modal__player {
+    width: 100%;
+    border-radius: 12px;
+    background: #000;
   }
 
   /* ===== HOW IT WORKS ===== */
@@ -421,201 +449,40 @@ const faqItems = [
     box-sizing: border-box;
     position: relative;
   }
-  .step-row--reverse .step-tile {
-    direction: rtl;
-  }
-  .step-row--reverse .step-tile > * {
-    direction: ltr;
-  }
-  .step-tile__text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-  }
-  .step-tile__heading {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-  .step-tile__num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--color-gold);
-    color: var(--color-dark);
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .step-tile__title {
-    font-family: var(--font-headline);
-    font-size: 36px;
-    color: var(--color-cream);
-    line-height: 1.2;
-  }
-  .step-tile__body {
-    font-size: 20px;
-    line-height: 1.7;
-    color: var(--color-text-muted);
-    max-width: 48ch;
-    white-space: nowrap;
-  }
-  .step-tile__visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-    position: relative;
-    align-self: center;
-    height: 0;
-  }
-  .step-tile::before {
-    content: '';
-    position: absolute;
-    background: var(--color-gold);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .step-tile__text,
-  .step-tile__visual {
-    position: relative;
-    z-index: 2;
-  }
-  .step-row:nth-child(1) .step-tile::before {
-    width: 275px;
-    height: 253px;
-    border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
-    right: 16%;
-    top: -10px;
-  }
-  .step-row:nth-child(2) .step-tile::before {
-    width: 380px;
-    height: 340px;
-    border-radius: 44% 56% 35% 65% / 55% 40% 60% 45%;
-    left: 5%;
-    top: -50px;
-  }
-  .step-row:nth-child(3) .step-tile::before {
-    width: 340px;
-    height: 320px;
-    border-radius: 55% 45% 60% 40% / 38% 62% 38% 62%;
-    right: 15%;
-    top: -30px;
-  }
-  .step-tile__photo {
-    max-width: 170px;
-    height: auto;
-    border-radius: 24px;
-    filter: drop-shadow(0 16px 40px rgba(0,0,0,0.3));
-    margin: -30px 0;
-    position: relative;
-    z-index: 1;
-  }
+  .step-row--reverse .step-tile { direction: rtl; }
+  .step-row--reverse .step-tile > * { direction: ltr; }
+  .step-tile__text { display: flex; flex-direction: column; justify-content: center; align-self: center; }
+  .step-tile__heading { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .step-tile__num { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: var(--color-gold); color: var(--color-dark); font-family: var(--font-body); font-size: 16px; font-weight: 700; flex-shrink: 0; }
+  .step-tile__title { font-family: var(--font-headline); font-size: 36px; color: var(--color-cream); line-height: 1.2; }
+  .step-tile__body { font-size: 20px; line-height: 1.7; color: var(--color-text-muted); max-width: 48ch; white-space: nowrap; }
+  .step-tile__visual { display: flex; justify-content: center; align-items: center; overflow: visible; position: relative; align-self: center; height: 0; }
+  .step-tile::before { content: ''; position: absolute; background: var(--color-gold); z-index: 1; pointer-events: none; }
+  .step-tile__text, .step-tile__visual { position: relative; z-index: 2; }
+  .step-row:nth-child(1) .step-tile::before { width: 275px; height: 253px; border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%; right: 16%; top: -10px; }
+  .step-row:nth-child(2) .step-tile::before { width: 380px; height: 340px; border-radius: 44% 56% 35% 65% / 55% 40% 60% 45%; left: 5%; top: -50px; }
+  .step-row:nth-child(3) .step-tile::before { width: 340px; height: 320px; border-radius: 55% 45% 60% 40% / 38% 62% 38% 62%; right: 15%; top: -30px; }
+  .step-tile__photo { max-width: 170px; height: auto; border-radius: 24px; filter: drop-shadow(0 16px 40px rgba(0,0,0,0.3)); margin: -30px 0; position: relative; z-index: 1; }
 
   /* Device: MacBook */
-  .device-macbook {
-    position: relative;
-    width: 110%;
-    max-width: 620px;
-    margin: -60px -5% -30px;
-    z-index: 1;
-  }
-  .device-macbook__bezel {
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: block;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .device-macbook__screen {
-    position: absolute;
-    z-index: 1;
-    top: 10.5%;
-    left: 11.5%;
-    width: 77%;
-    height: 80%;
-    object-fit: cover;
-    object-position: left top;
-    border-radius: 4px;
-    background: #1a1a1a;
-  }
+  .device-macbook { position: relative; width: 110%; max-width: 620px; margin: -60px -5% -30px; z-index: 1; }
+  .device-macbook__bezel { position: relative; width: 100%; height: auto; display: block; z-index: 2; pointer-events: none; }
+  .device-macbook__screen { position: absolute; z-index: 1; top: 10.5%; left: 11.5%; width: 77%; height: 80%; object-fit: cover; object-position: left top; border-radius: 4px; background: #1a1a1a; }
 
   /* Device: iPad */
-  .device-ipad {
-    position: relative;
-    width: 90%;
-    max-width: 520px;
-    overflow: hidden;
-    margin: -30px 0;
-    z-index: 1;
-  }
-  .device-ipad__bezel {
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: block;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .device-ipad__screen {
-    position: absolute;
-    z-index: 1;
-    top: 4%;
-    left: 4.5%;
-    width: 91%;
-    height: 92.5%;
-    object-fit: cover;
-    object-position: center bottom;
-    border-radius: 10px;
-    background: #1a1a1a;
-  }
+  .device-ipad { position: relative; width: 90%; max-width: 520px; overflow: hidden; margin: -30px 0; z-index: 1; }
+  .device-ipad__bezel { position: relative; width: 100%; height: auto; display: block; z-index: 2; pointer-events: none; }
+  .device-ipad__screen { position: absolute; z-index: 1; top: 4%; left: 4.5%; width: 91%; height: 92.5%; object-fit: cover; object-position: center bottom; border-radius: 10px; background: #1a1a1a; }
 
   /* Reveal animation */
-  .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Cascaded step reveals */
-  .step-row .step-tile__text {
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
-  .step-row .step-tile::before {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s;
-  }
-  .step-row .step-tile__visual {
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
-  }
-  .step-row.visible .step-tile__text {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .step-row.visible .step-tile::before {
-    opacity: 1;
-    transform: scale(1);
-  }
-  .step-row.visible .step-tile__visual {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .step-row .step-tile__text { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .step-row .step-tile::before { opacity: 0; transform: scale(0.8); transition: opacity 0.5s ease 0.15s, transform 0.5s ease 0.15s; }
+  .step-row .step-tile__visual { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s; }
+  .step-row.visible .step-tile__text { opacity: 1; transform: translateY(0); }
+  .step-row.visible .step-tile::before { opacity: 1; transform: scale(1); }
+  .step-row.visible .step-tile__visual { opacity: 1; transform: translateY(0); }
 
   /* ===== FOR TEACHERS STRIP ===== */
   .teachers-strip {
@@ -647,160 +514,108 @@ const faqItems = [
     box-shadow: 0 8px 40px rgba(200, 146, 74, 0.15), 0 0 0 1px rgba(200, 146, 74, 0.08);
   }
 
-  /* ===== FOR PARENTS STRIP ===== */
-  .parents-strip {
-    background-color: var(--color-card-bg);
-  }
-  .parents-strip__inner {
+  /* Testimonial bubbles */
+  .teachers-strip__testimonials {
     display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 64px;
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 72px;
+    text-align: left;
   }
-  .parents-strip__decor {
+  .testimonial-blob {
     position: relative;
+    padding-top: 20px;
   }
-  .parents-strip__graphic {
-    width: 100%;
-    max-width: 200px;
-    opacity: 0.8;
+  .testimonial-blob__shape {
+    position: absolute;
+    top: -10px;
+    width: 120px;
+    height: 120px;
+    opacity: 0.08;
+    z-index: 0;
   }
-  .parents-strip__graphic svg {
-    width: 100%;
-    height: auto;
+  .testimonial-blob--1 .testimonial-blob__shape {
+    left: -20px;
+    fill: var(--color-gold);
   }
-  .parents-strip__content {
-    max-width: 600px;
+  .testimonial-blob--2 .testimonial-blob__shape {
+    right: -10px;
+    left: auto;
+    fill: var(--color-gold-light);
   }
-  .parents-strip__content .headline-lg {
-    margin-bottom: 24px;
+  .testimonial-blob--3 .testimonial-blob__shape {
+    left: -15px;
+    fill: var(--color-gold);
   }
-  .parents-strip__content .body-lg {
-    margin-bottom: 16px;
+  .testimonial-blob__bubble {
+    position: relative;
+    z-index: 1;
+    background: rgba(200, 146, 74, 0.06);
+    border: 1px solid rgba(200, 146, 74, 0.15);
+    border-radius: 20px 20px 20px 4px;
+    padding: 28px 24px;
   }
-  .parents-strip__note {
-    font-weight: 600;
-    margin-bottom: 32px !important;
+  .testimonial-blob--2 .testimonial-blob__bubble {
+    border-radius: 20px 20px 4px 20px;
   }
+  .testimonial-blob__quote {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-cream);
+    margin: 0;
+  }
+  .testimonial-blob__author {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--color-text-muted);
+  }
+  .testimonial-blob__author strong {
+    color: var(--color-gold-light);
+  }
+
+  /* ===== FOR PARENTS STRIP ===== */
+  .parents-strip { background-color: var(--color-card-bg); }
+  .parents-strip__inner { display: grid; grid-template-columns: 280px 1fr; gap: 64px; align-items: start; }
+  .parents-strip__decor { position: relative; }
+  .parents-strip__graphic { width: 100%; max-width: 200px; opacity: 0.8; }
+  .parents-strip__graphic svg { width: 100%; height: auto; }
+  .parents-strip__content { max-width: 600px; }
+  .parents-strip__content .headline-lg { margin-bottom: 24px; }
+  .parents-strip__content .body-lg { margin-bottom: 16px; }
+  .parents-strip__note { font-weight: 600; margin-bottom: 32px !important; }
 
   /* ===== FAQ ===== */
-  .faq {
-    background-color: var(--color-card-bg);
-    padding-bottom: 96px;
-  }
-  .faq__headline {
-    margin-bottom: 40px;
-  }
+  .faq { background-color: var(--color-card-bg); padding-bottom: 96px; }
+  .faq__headline { margin-bottom: 40px; }
 
   /* ===== FINAL CTA ===== */
-  .final-cta {
-    background-color: var(--color-dark);
-    position: relative;
-    overflow: hidden;
-  }
-  .final-cta__lines {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 15px;
-    pointer-events: none;
-  }
-  .final-cta__lines span {
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: rgba(200, 146, 74, 0.06);
-  }
-  .final-cta__inner {
-    position: relative;
-    text-align: center;
-  }
-  .final-cta__headline {
-    color: var(--color-cream);
-    margin-bottom: 24px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .final-cta__sub {
-    color: var(--color-text-muted);
-    max-width: 520px;
-    margin: 0 auto;
-  }
+  .final-cta { background-color: var(--color-dark); position: relative; overflow: hidden; }
+  .final-cta__lines { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 15px; pointer-events: none; }
+  .final-cta__lines span { display: block; width: 100%; height: 1px; background: rgba(200, 146, 74, 0.06); }
+  .final-cta__inner { position: relative; text-align: center; }
+  .final-cta__headline { color: var(--color-cream); margin-bottom: 24px; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .final-cta__sub { color: var(--color-text-muted); max-width: 520px; margin: 0 auto; }
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
-    .hero {
-      padding: 48px 0 64px;
-    }
-    .hero__inner {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-    .hero__device {
-      max-width: 280px;
-    }
-    .steps-interactive {
-      gap: 40px;
-    }
-    .step-tile {
-      padding: 28px 20px;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      height: auto;
-      overflow: hidden;
-    }
-    .step-tile::before {
-      display: none;
-    }
-    .step-row--reverse .step-tile {
-      direction: ltr;
-    }
-    .step-tile__text {
-      order: 1;
-    }
-    .step-tile__visual {
-      order: 2;
-      height: auto;
-    }
-    .step-tile__heading {
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-    .step-tile__title {
-      font-size: 24px;
-    }
-    .step-tile__body {
-      font-size: 16px;
-      white-space: normal;
-    }
-    .step-tile__photo {
-      max-width: 160px;
-      margin: 0;
-      border-radius: 16px;
-    }
-    .device-macbook {
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-    }
-    .device-ipad {
-      width: 100%;
-      max-width: 100%;
-      margin: 0;
-    }
-    .parents-strip__inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-    }
-    .parents-strip__decor {
-      display: none;
-    }
-    .testimonials__slide {
-      width: 300px;
-      padding: 24px;
-    }
+    .hero { padding: 48px 0 64px; }
+    .hero__inner { grid-template-columns: 1fr; gap: 48px; }
+    .hero__device { max-width: 280px; }
+    .steps-interactive { gap: 40px; }
+    .step-tile { padding: 28px 20px; grid-template-columns: 1fr; gap: 20px; height: auto; overflow: hidden; }
+    .step-tile::before { display: none; }
+    .step-row--reverse .step-tile { direction: ltr; }
+    .step-tile__text { order: 1; }
+    .step-tile__visual { order: 2; height: auto; }
+    .step-tile__heading { gap: 12px; margin-bottom: 8px; }
+    .step-tile__title { font-size: 24px; }
+    .step-tile__body { font-size: 16px; white-space: normal; }
+    .step-tile__photo { max-width: 160px; margin: 0; border-radius: 16px; }
+    .device-macbook { width: 100%; max-width: 100%; margin: 0; }
+    .device-ipad { width: 100%; max-width: 100%; margin: 0; }
+    .teachers-strip__testimonials { grid-template-columns: 1fr; gap: 24px; }
+    .parents-strip__inner { grid-template-columns: 1fr; gap: 32px; }
+    .parents-strip__decor { display: none; }
   }
 </style>
