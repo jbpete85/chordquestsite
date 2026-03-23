@@ -32,7 +32,10 @@ const base = import.meta.env.BASE_URL;
     </div>
     <div class="footer__bottom">
       <p class="footer__copy">&copy; {year} ChordQuest Music. All rights reserved.</p>
-      <p class="footer__location">Argyle, TX</p>
+      <div class="footer__bottom-right">
+        <a href={`${base}privacy`} class="footer__bottom-link">Privacy Policy</a>
+        <p class="footer__location">Argyle, TX</p>
+      </div>
     </div>
   </div>
 </footer>
@@ -120,6 +123,20 @@ const base = import.meta.env.BASE_URL;
   .footer__location {
     font-size: 12px;
     color: rgba(138, 114, 96, 0.6);
+  }
+  .footer__bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer__bottom-link {
+    font-size: 12px;
+    color: rgba(138, 114, 96, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer__bottom-link:hover {
+    color: var(--color-cream);
   }
 
   @media (max-width: 768px) {
