@@ -47,6 +47,34 @@ const parentFaqItems = [
     </div>
   </section>
 
+  <!-- ===== THE RESEARCH ===== -->
+  <section class="p-science section">
+    <div class="container">
+      <div class="p-science__header">
+        <h2 class="headline-md p-science__headline">The research is clear.</h2>
+        <p class="body-lg text-warm p-science__sub">Hearing music played back before practicing changes how kids learn.</p>
+      </div>
+      <div class="p-science__grid">
+        <div class="p-science__card">
+          <span class="p-science__number" data-target="2.3" data-suffix="×" data-decimals="1">0</span>
+          <p class="p-science__label">better retention overnight when kids hear their music first</p>
+          <cite class="p-science__cite">Cash et al., 2014</cite>
+        </div>
+        <div class="p-science__card">
+          <span class="p-science__number p-science__number--static">#1</span>
+          <p class="p-science__label">Hearing a model beat every other method tested — including verbal instruction</p>
+          <cite class="p-science__cite">Rosenthal, 1984</cite>
+        </div>
+        <div class="p-science__card">
+          <span class="p-science__number" data-target="100" data-suffix="%" data-decimals="0">0</span>
+          <p class="p-science__label">of grade levels K–4 showed significantly higher scores with listening familiarity</p>
+          <cite class="p-science__cite">Frewen, 2010</cite>
+        </div>
+      </div>
+      <p class="p-science__source">Based on peer-reviewed studies from the Journal of Research in Music Education</p>
+    </div>
+  </section>
+
   <!-- ===== HOW IT WORKS ===== -->
   <section class="p-how section">
     <div class="container">
@@ -109,6 +137,77 @@ const parentFaqItems = [
     max-width: 620px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  /* ===== THE RESEARCH ===== */
+  .p-science {
+    background-color: var(--color-card-bg);
+    text-align: center;
+  }
+  .p-science__header {
+    max-width: 620px;
+    margin: 0 auto 48px;
+  }
+  .p-science__headline {
+    margin-bottom: 12px;
+  }
+  .p-science__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .p-science__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: 16px;
+    padding: 40px 32px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+  }
+  .p-science.is-visible .p-science__card:nth-child(1) {
+    opacity: 1; transform: translateY(0); transition-delay: 0s;
+  }
+  .p-science.is-visible .p-science__card:nth-child(2) {
+    opacity: 1; transform: translateY(0); transition-delay: 0.12s;
+  }
+  .p-science.is-visible .p-science__card:nth-child(3) {
+    opacity: 1; transform: translateY(0); transition-delay: 0.24s;
+  }
+  .p-science.is-visible .p-science__card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold);
+    box-shadow: 0 12px 40px rgba(200, 146, 74, 0.12);
+  }
+  .p-science__number {
+    display: block;
+    font-family: var(--font-headline);
+    font-size: 56px;
+    line-height: 1;
+    color: var(--color-gold);
+    margin-bottom: 16px;
+  }
+  .p-science__label {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-warm);
+    margin-bottom: 12px;
+  }
+  .p-science__cite {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-style: normal;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+  .p-science__source {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin-top: 40px;
+    letter-spacing: 0.02em;
   }
 
   /* ===== HOW IT WORKS ===== */
@@ -185,8 +284,53 @@ const parentFaqItems = [
     .p-hero {
       padding: 64px 0 80px;
     }
+    .p-science__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .p-science__number {
+      font-size: 40px;
+    }
     .p-how__grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
+
+<script>
+  const section = document.querySelector('.p-science');
+  if (section) {
+    const numbers = section.querySelectorAll('.p-science__number[data-target]');
+    let animated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          numbers.forEach((el) => animateNumber(el as HTMLElement));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(section);
+
+    function animateNumber(el: HTMLElement) {
+      const target = parseFloat(el.dataset.target!);
+      const suffix = el.dataset.suffix || '';
+      const decimals = parseInt(el.dataset.decimals || '0');
+      const duration = 1500;
+      const start = performance.now();
+
+      function tick(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = (target * eased).toFixed(decimals);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  }
+</script>
