@@ -37,31 +37,43 @@ const faqItems = [
         </div>
       </div>
       <div class="hero__mockup">
-        <div class="hero__shape hero__shape--1"></div>
         <div class="hero__shape hero__shape--2"></div>
-        <div class="hero__shape hero__shape--3"></div>
+        <div class="hero__shape hero__shape--1"></div>
         <img src={`${base}images/iphone-mockup.png`} alt="ChordQuest app on iPhone 17 Pro showing sheet music playback" class="hero__device" />
       </div>
     </div>
   </section>
 
-  <!-- ===== SOCIAL PROOF BAR ===== -->
-  <section class="social-proof">
-    <div class="container social-proof__inner">
-      <span>&starf;&starf;&starf;&starf;&starf; Recommended by private teachers</span>
-      <span class="social-proof__divider"></span>
-      <span>Free for teachers</span>
-      <span class="social-proof__divider"></span>
-      <span>iOS &middot; iPhone &amp; iPad</span>
-      <span class="social-proof__divider"></span>
-      <span>Piano &middot; Guitar &middot; More coming</span>
-    </div>
-  </section>
-
-  <!-- ===== ENTITY BLOCK ===== -->
-  <section class="entity">
+  <!-- ===== BRAND STATEMENT + TESTIMONIALS ===== -->
+  <section class="brand-proof">
     <div class="container container--narrow">
-      <p class="entity__text">ChordQuest is a free app for music students and teachers that turns any photo of sheet music into instant playback. Students hear their exact part&nbsp;&mdash; on any instrument&nbsp;&mdash; before they practice it. Free for teachers forever. Student subscriptions are free for the first 7 days, then only $4.99/month after.</p>
+      <p class="brand-proof__statement">ChordQuest is a free app for music students and teachers that turns any photo of sheet music into instant playback. Students hear their exact part&nbsp;&mdash; on any instrument&nbsp;&mdash; before they practice it. Free for teachers forever. Student subscriptions are free for the first 7 days, then only $4.99/month after.</p>
+    </div>
+    <div class="testimonials__track">
+      <div class="testimonials__slide">
+        <blockquote class="testimonials__quote">&ldquo;Chord Quest makes learning music so easy! My students can hear what it's supposed to sound like even when I'm not there, so home practice is so much more beneficial.&rdquo;</blockquote>
+        <p class="testimonials__author"><strong>David</strong> &mdash; Music Teacher</p>
+      </div>
+      <div class="testimonials__slide">
+        <blockquote class="testimonials__quote">&ldquo;I've always wished I had an orchestra in my home to practice with. Chord Quest has now provided that for me.&rdquo;</blockquote>
+        <p class="testimonials__author"><strong>Mei</strong> &mdash; Professional Piano Player</p>
+      </div>
+      <div class="testimonials__slide">
+        <blockquote class="testimonials__quote">&ldquo;Playing with other musicians is so much more enjoyable now! Chord Quest lets us share music easily and practice our parts together.&rdquo;</blockquote>
+        <p class="testimonials__author"><strong>Sarah</strong> &mdash; Choir Director</p>
+      </div>
+      <div class="testimonials__slide">
+        <blockquote class="testimonials__quote">&ldquo;Chord Quest makes learning music so easy! My students can hear what it's supposed to sound like even when I'm not there, so home practice is so much more beneficial.&rdquo;</blockquote>
+        <p class="testimonials__author"><strong>David</strong> &mdash; Music Teacher</p>
+      </div>
+      <div class="testimonials__slide">
+        <blockquote class="testimonials__quote">&ldquo;I've always wished I had an orchestra in my home to practice with. Chord Quest has now provided that for me.&rdquo;</blockquote>
+        <p class="testimonials__author"><strong>Mei</strong> &mdash; Professional Piano Player</p>
+      </div>
+      <div class="testimonials__slide">
+        <blockquote class="testimonials__quote">&ldquo;Playing with other musicians is so much more enjoyable now! Chord Quest lets us share music easily and practice our parts together.&rdquo;</blockquote>
+        <p class="testimonials__author"><strong>Sarah</strong> &mdash; Choir Director</p>
+      </div>
     </div>
   </section>
 
@@ -275,51 +287,38 @@ const faqItems = [
   }
   .hero__shape {
     position: absolute;
-    border-radius: 32px;
     z-index: 0;
   }
   .hero__shape--1 {
-    width: 320px;
-    height: 380px;
-    background-color: #C8924A;
-    opacity: 0.25;
-    top: -20px;
-    right: -60px;
-    transform: rotate(-8deg);
+    width: 440px;
+    height: 480px;
+    background-color: var(--color-gold);
+    border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+    top: 50%;
+    left: 50%;
+    margin-top: -260px;
+    margin-left: -180px;
     animation: float-1 8s ease-in-out infinite;
   }
   .hero__shape--2 {
-    width: 220px;
-    height: 280px;
-    background-color: #D9B077;
-    opacity: 0.18;
-    bottom: 20px;
-    left: -40px;
-    border-radius: 40px;
-    transform: rotate(12deg);
+    width: 480px;
+    height: 520px;
+    background-color: var(--color-gold-light);
+    opacity: 0.35;
+    border-radius: 80% 20% 60% 40% / 30% 70% 20% 80%;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -300px;
     animation: float-2 10s ease-in-out infinite;
   }
-  .hero__shape--3 {
-    width: 140px;
-    height: 140px;
-    background-color: #C8924A;
-    opacity: 0.12;
-    top: 60%;
-    right: 10%;
-    border-radius: 50%;
-    animation: float-3 6s ease-in-out infinite;
-  }
   @keyframes float-1 {
-    0%, 100% { transform: rotate(-8deg) translateY(0); }
-    50% { transform: rotate(-6deg) translateY(-14px); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-16px) rotate(3deg); }
   }
   @keyframes float-2 {
-    0%, 100% { transform: rotate(12deg) translateX(0); }
-    50% { transform: rotate(10deg) translateX(10px) translateY(-8px); }
-  }
-  @keyframes float-3 {
-    0%, 100% { transform: scale(1) translateY(0); }
-    50% { transform: scale(1.08) translateY(-10px); }
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(12px) translateY(-10px) rotate(-3deg); }
   }
   .hero__device {
     position: relative;
@@ -330,39 +329,56 @@ const faqItems = [
     filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
   }
 
-  /* ===== SOCIAL PROOF ===== */
-  .social-proof {
-    background-color: var(--color-social-proof-bg);
-    padding: 18px 0;
-  }
-  .social-proof__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--color-text-muted);
-  }
-  .social-proof__divider {
-    width: 1px;
-    height: 14px;
-    background-color: rgba(200, 146, 74, 0.2);
-  }
-
-  /* ===== ENTITY ===== */
-  .entity {
+  /* ===== BRAND STATEMENT + TESTIMONIALS ===== */
+  .brand-proof {
     background-color: var(--color-dark);
     padding: 64px 0;
+    overflow: hidden;
   }
-  .entity__text {
+  .brand-proof__statement {
     text-align: center;
-    font-size: 15px;
-    line-height: 1.8;
+    font-family: var(--font-headline);
+    font-size: 22px;
+    line-height: 1.6;
+    color: var(--color-cream);
+    max-width: 780px;
+    margin: 0 auto 48px;
+  }
+  .testimonials__track {
+    display: flex;
+    gap: 32px;
+    animation: scroll-left 30s linear infinite;
+    width: max-content;
+  }
+  .testimonials__track:hover {
+    animation-play-state: paused;
+  }
+  .testimonials__slide {
+    flex-shrink: 0;
+    width: 400px;
+    padding: 32px;
+    background-color: rgba(200, 146, 74, 0.08);
+    border-radius: 16px;
+    border: 1px solid rgba(200, 146, 74, 0.15);
+  }
+  .testimonials__quote {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--color-cream);
+    margin: 0;
+  }
+  .testimonials__author {
+    margin-top: 16px;
+    font-size: 14px;
     color: var(--color-text-muted);
-    max-width: 740px;
-    margin: 0 auto;
+  }
+  .testimonials__author strong {
+    color: var(--color-gold-light);
+  }
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   /* ===== HOW IT WORKS ===== */
@@ -782,13 +798,9 @@ const faqItems = [
     .parents-strip__decor {
       display: none;
     }
-    .social-proof__divider {
-      display: none;
-    }
-    .social-proof__inner {
-      flex-direction: column;
-      gap: 8px;
-      text-align: center;
+    .testimonials__slide {
+      width: 300px;
+      padding: 24px;
     }
   }
 </style>
