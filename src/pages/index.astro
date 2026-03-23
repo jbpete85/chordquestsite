@@ -73,25 +73,105 @@ const faqItems = [
         <h2 class="headline-lg">Capture The Music.<br/>Master Your Part.</h2>
         <p class="body-lg text-warm how-it-works__sub">No more searching libraries, hoping to find the song and instrument you need. ChordQuest reads directly from your sheet music. Any publisher, any edition.</p>
       </div>
-      <div class="how-it-works__grid">
-        <div class="step-card">
-          <span class="step-card__num">1</span>
-          <h3 class="step-card__title">Point Your Camera</h3>
-          <p class="step-card__body">Scan or upload any piece of music you're working on.</p>
+
+      <div class="steps-interactive">
+        <!-- Step 1 -->
+        <div class="step-row reveal">
+          <div class="step-tile">
+            <div class="step-tile__text">
+              <div class="step-tile__heading">
+                <span class="step-tile__num">1</span>
+                <h3 class="step-tile__title">Point Your Camera</h3>
+              </div>
+              <p class="step-tile__body">Scan or upload any piece of music you're working on.</p>
+            </div>
+            <div class="step-tile__visual">
+              <img src={`${base}images/justiphone.png`} alt="iPhone camera scanning sheet music" class="step-tile__photo" />
+            </div>
+          </div>
         </div>
-        <div class="step-card">
-          <span class="step-card__num">2</span>
-          <h3 class="step-card__title">It Reads Every Note</h3>
-          <p class="step-card__body">Treble, bass, chords, and dynamics, all recognized instantly from the scan. Not pulled from a database, but read from the actual music in front of you.</p>
+
+        <!-- Step 2 -->
+        <div class="step-row step-row--reverse reveal">
+          <div class="step-tile">
+            <div class="step-tile__text">
+              <div class="step-tile__heading">
+                <span class="step-tile__num">2</span>
+                <h3 class="step-tile__title">It Reads Every Note</h3>
+              </div>
+              <p class="step-tile__body">ChordQuest reads every note–directly from the music.</p>
+            </div>
+            <div class="step-tile__visual">
+              <div class="device-macbook">
+                <video class="device-macbook__screen" muted playsinline preload="metadata" data-play-once>
+                  <source src={`${base}images/processing-success-clip.mp4`} type="video/mp4" />
+                </video>
+                <img src={`${base}images/macbook-bezel.png`} alt="" class="device-macbook__bezel" aria-hidden="true" />
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="step-card">
-          <span class="step-card__num">3</span>
-          <h3 class="step-card__title">Hear the Exact Part</h3>
-          <p class="step-card__body">Hear your notes isolated or as part of the full ensemble. Listen to and practice exactly what you need.</p>
+
+        <!-- Step 3 -->
+        <div class="step-row reveal">
+          <div class="step-tile">
+            <div class="step-tile__text">
+              <div class="step-tile__heading">
+                <span class="step-tile__num">3</span>
+                <h3 class="step-tile__title">Hear the Exact Part</h3>
+              </div>
+              <p class="step-tile__body">Hear your notes isolated or as part of the full ensemble.</p>
+            </div>
+            <div class="step-tile__visual">
+              <div class="device-ipad">
+                <video class="device-ipad__screen" muted playsinline preload="metadata" data-play-once>
+                  <source src={`${base}images/playthrough-clip.mp4`} type="video/mp4" />
+                </video>
+                <img src={`${base}images/ipad-bezel.png`} alt="" class="device-ipad__bezel" aria-hidden="true" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length > 0) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      revealEls.forEach((el) => revealObserver.observe(el));
+    }
+
+    // Play videos once on reveal
+    const playOnceVideos = document.querySelectorAll('video[data-play-once]');
+    if (playOnceVideos.length > 0) {
+      const videoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const video = entry.target;
+              video.play().catch(() => {});
+              videoObserver.unobserve(video);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      playOnceVideos.forEach((video) => videoObserver.observe(video));
+    }
+  </script>
 
   <!-- ===== FOR TEACHERS STRIP ===== -->
   <section class="teachers-strip section">
@@ -302,41 +382,199 @@ const faqItems = [
   .how-it-works__sub {
     margin-top: 20px;
   }
-  .how-it-works__grid {
+
+  /* --- Interactive Steps --- */
+  .steps-interactive {
+    display: flex;
+    flex-direction: column;
+    gap: 88px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .step-row {
+    display: flex;
+    justify-content: center;
+    overflow: visible;
+  }
+  .step-tile {
+    width: 100%;
+    padding: 24px 44px;
+    background-color: var(--color-dark);
+    border-radius: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    overflow: visible;
+    height: 260px;
+    box-sizing: border-box;
+    position: relative;
   }
-  .step-card {
-    background-color: var(--color-white);
-    border: 1px solid var(--color-border-light);
-    border-radius: 16px;
-    padding: 40px 32px;
+  .step-row--reverse .step-tile {
+    direction: rtl;
   }
-  .step-card__num {
+  .step-row--reverse .step-tile > * {
+    direction: ltr;
+  }
+  .step-tile__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+  }
+  .step-tile__heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .step-tile__num {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: var(--color-gold);
     color: var(--color-dark);
     font-family: var(--font-body);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
-    margin-bottom: 20px;
+    flex-shrink: 0;
   }
-  .step-card__title {
+  .step-tile__title {
     font-family: var(--font-headline);
-    font-size: 22px;
-    margin-bottom: 12px;
-    color: var(--color-dark);
+    font-size: 36px;
+    color: var(--color-cream);
+    line-height: 1.2;
   }
-  .step-card__body {
-    font-size: 15px;
+  .step-tile__body {
+    font-size: 20px;
     line-height: 1.7;
-    color: var(--color-text-warm);
+    color: var(--color-text-muted);
+    max-width: 48ch;
+    white-space: nowrap;
+  }
+  .step-tile__visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    position: relative;
+    align-self: center;
+    height: 0;
+  }
+  .step-tile::before {
+    content: '';
+    position: absolute;
+    background: var(--color-gold);
+    z-index: 1;
+    pointer-events: none;
+  }
+  .step-tile__text,
+  .step-tile__visual {
+    position: relative;
+    z-index: 2;
+  }
+  .step-row:nth-child(1) .step-tile::before {
+    width: 275px;
+    height: 253px;
+    border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%;
+    right: 16%;
+    top: -10px;
+  }
+  .step-row:nth-child(2) .step-tile::before {
+    width: 380px;
+    height: 340px;
+    border-radius: 44% 56% 35% 65% / 55% 40% 60% 45%;
+    left: 5%;
+    top: -50px;
+  }
+  .step-row:nth-child(3) .step-tile::before {
+    width: 340px;
+    height: 320px;
+    border-radius: 55% 45% 60% 40% / 38% 62% 38% 62%;
+    right: 15%;
+    top: -30px;
+  }
+  .step-tile__photo {
+    max-width: 170px;
+    height: auto;
+    border-radius: 24px;
+    filter: drop-shadow(0 16px 40px rgba(0,0,0,0.3));
+    margin: -30px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Device: MacBook */
+  .device-macbook {
+    position: relative;
+    width: 110%;
+    max-width: 620px;
+    margin: -60px -5% -30px;
+    z-index: 1;
+  }
+  .device-macbook__bezel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .device-macbook__screen {
+    position: absolute;
+    z-index: 1;
+    top: 10.5%;
+    left: 11.5%;
+    width: 77%;
+    height: 80%;
+    object-fit: cover;
+    object-position: left top;
+    border-radius: 4px;
+    background: #1a1a1a;
+  }
+
+  /* Device: iPad */
+  .device-ipad {
+    position: relative;
+    width: 90%;
+    max-width: 520px;
+    overflow: hidden;
+    margin: -30px 0;
+    z-index: 1;
+  }
+  .device-ipad__bezel {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .device-ipad__screen {
+    position: absolute;
+    z-index: 1;
+    top: 4%;
+    left: 4.5%;
+    width: 91%;
+    height: 92.5%;
+    object-fit: cover;
+    object-position: center bottom;
+    border-radius: 10px;
+    background: #1a1a1a;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   /* ===== FOR TEACHERS STRIP ===== */
@@ -484,8 +722,54 @@ const faqItems = [
     .hero__device {
       max-width: 280px;
     }
-    .how-it-works__grid {
+    .steps-interactive {
+      gap: 40px;
+    }
+    .step-tile {
+      padding: 28px 20px;
       grid-template-columns: 1fr;
+      gap: 20px;
+      height: auto;
+      overflow: hidden;
+    }
+    .step-tile::before {
+      display: none;
+    }
+    .step-row--reverse .step-tile {
+      direction: ltr;
+    }
+    .step-tile__text {
+      order: 1;
+    }
+    .step-tile__visual {
+      order: 2;
+      height: auto;
+    }
+    .step-tile__heading {
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .step-tile__title {
+      font-size: 24px;
+    }
+    .step-tile__body {
+      font-size: 16px;
+      white-space: normal;
+    }
+    .step-tile__photo {
+      max-width: 160px;
+      margin: 0;
+      border-radius: 16px;
+    }
+    .device-macbook {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+    }
+    .device-ipad {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
     }
     .parents-strip__inner {
       grid-template-columns: 1fr;
