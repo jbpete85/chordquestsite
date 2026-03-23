@@ -183,12 +183,7 @@ const faqItems = [
         <a href={`${base}teachers`} class="btn btn--gold">Teachers Download Free</a>
       </div>
       <div class="teachers-strip__mockup">
-        <div class="teachers-strip__laptop">
-          <div class="teachers-strip__screen">
-            <img src={`${base}images/app-screenshot.png`} alt="ChordQuest web app interface" />
-          </div>
-          <div class="teachers-strip__hinge"></div>
-        </div>
+        <img src={`${base}images/Product%20Shot.png`} alt="ChordQuest app product screenshot" class="teachers-strip__product-shot" />
       </div>
     </div>
   </section>
@@ -624,36 +619,16 @@ const faqItems = [
   }
   .teachers-strip__mockup {
     margin-top: 64px;
-  }
-  .teachers-strip__laptop {
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
   }
-  .teachers-strip__screen {
+  .teachers-strip__product-shot {
     width: 100%;
-    height: 420px;
-    background: var(--color-border-dark);
-    border-radius: 12px 12px 0 0;
-    border: 3px solid #3D2E1A;
-    border-bottom: none;
-    overflow: hidden;
-  }
-  .teachers-strip__screen img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-  }
-  .teachers-strip__hinge {
-    width: 110%;
-    max-width: 770px;
-    height: 14px;
-    background: linear-gradient(180deg, #3D2E1A 0%, #2A1F12 100%);
-    border-radius: 0 0 4px 4px;
+    max-width: 600px;
+    height: auto;
+    border-radius: 16px;
+    border: 2px solid rgba(200, 146, 74, 0.3);
+    box-shadow: 0 8px 40px rgba(200, 146, 74, 0.15), 0 0 0 1px rgba(200, 146, 74, 0.08);
   }
 
   /* ===== FOR PARENTS STRIP ===== */
