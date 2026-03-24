@@ -38,7 +38,7 @@ const faqItems = [
       <div class="hero__mockup">
         <div class="hero__shape hero__shape--1"></div>
         <div class="hero__shape hero__shape--2"></div>
-        <img src={`${base}images/iphone-mockup.png`} alt="ChordQuest app on iPhone showing sheet music playback" class="hero__device" />
+        <img src={`${base}images/phone-shadow-mirror.png`} alt="ChordQuest app on iPhone showing sheet music playback" class="hero__device" />
       </div>
     </div>
   </section>
@@ -262,9 +262,51 @@ const faqItems = [
         <p class="eyebrow">For Parents</p>
         <h2 class="headline-lg">No Music Background? No Time?<br/>No Problem.</h2>
         <p class="body-lg text-warm">When students know what their part should sound like, learning music becomes more productive, and far less frustrating. With ChordQuest's sheet music playback technology, parents can confidently support their child's practice without preparation or needing to know how to read a single note.</p>
-        <p class="body-lg text-warm parents-strip__note">One subscription for $4.99 covers the whole family too.</p>
-        <a href={`${base}parents`} class="btn btn--gold">Try For Free</a>
+        <a href={`${base}parents`} class="btn btn--gold">Learn More</a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section class="pricing section" id="pricing">
+    <div class="container">
+      <div class="pricing__header">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="headline-lg pricing__headline">Start free. Stay affordable.</h2>
+        <p class="body-lg text-warm pricing__sub">Every plan starts with a free 7-day trial. Teachers always use ChordQuest free.</p>
+      </div>
+      <div class="pricing__grid">
+        <div class="pricing__card">
+          <div class="pricing__card-header">
+            <h3 class="pricing__plan-name">Individual</h3>
+            <p class="pricing__price"><span class="pricing__amount">$4.99</span><span class="pricing__period">/month</span></p>
+            <p class="pricing__annual">or $39.99/year (save 33%)</p>
+          </div>
+          <ul class="pricing__features">
+            <li>Unlimited sheet music scans</li>
+            <li>All instrument playback</li>
+            <li>Tempo control</li>
+            <li>Part isolation</li>
+          </ul>
+          <a href="https://app.chordquestmusic.com" class="btn btn--gold pricing__cta">Start Free Trial</a>
+        </div>
+        <div class="pricing__card pricing__card--featured">
+          <div class="pricing__badge">Best Value</div>
+          <div class="pricing__card-header">
+            <h3 class="pricing__plan-name">Family</h3>
+            <p class="pricing__price"><span class="pricing__amount">$14.99</span><span class="pricing__period">/month</span></p>
+            <p class="pricing__annual">or $149.99/year</p>
+          </div>
+          <ul class="pricing__features">
+            <li>Everything in Individual</li>
+            <li>Up to 10 licenses</li>
+            <li>One account, whole family</li>
+            <li>Shared music library</li>
+          </ul>
+          <a href="https://app.chordquestmusic.com" class="btn btn--gold pricing__cta">Start Free Trial</a>
+        </div>
+      </div>
+      <p class="pricing__trial-note">7-day free trial on all plans. Cancel anytime.</p>
     </div>
   </section>
 
@@ -360,9 +402,8 @@ const faqItems = [
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     height: auto;
-    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.4));
   }
 
   /* ===== VIDEO MODAL ===== */
@@ -585,6 +626,129 @@ const faqItems = [
   .parents-strip__content .body-lg { margin-bottom: 16px; }
   .parents-strip__note { font-weight: 600; margin-bottom: 32px !important; }
 
+  /* ===== PRICING ===== */
+  .pricing {
+    background-color: var(--color-cream);
+  }
+  .pricing__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 56px;
+  }
+  .pricing__headline {
+    margin-bottom: 16px;
+  }
+  .pricing__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .pricing__card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: 20px;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .pricing__card--featured {
+    border-color: var(--color-gold);
+    box-shadow: 0 8px 40px rgba(217, 176, 119, 0.12);
+  }
+  .pricing__badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 5px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .pricing__card-header {
+    margin-bottom: 28px;
+  }
+  .pricing__plan-name {
+    font-family: var(--font-headline);
+    font-size: 24px;
+    color: var(--color-dark);
+    margin-bottom: 12px;
+  }
+  .pricing__price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .pricing__amount {
+    font-family: var(--font-headline);
+    font-size: 44px;
+    line-height: 1;
+    color: var(--color-dark);
+  }
+  .pricing__period {
+    font-size: 16px;
+    color: var(--color-text-muted);
+  }
+  .pricing__annual {
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-top: 6px;
+  }
+  .pricing__features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex: 1;
+  }
+  .pricing__features li {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-text-warm);
+    padding-left: 24px;
+    position: relative;
+  }
+  .pricing__features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    opacity: 0.2;
+  }
+  .pricing__features li::after {
+    content: '✓';
+    position: absolute;
+    left: 2px;
+    top: 3px;
+    font-size: 11px;
+    color: var(--color-gold);
+    font-weight: 700;
+  }
+  .pricing__cta {
+    width: 100%;
+    text-align: center;
+  }
+  .pricing__trial-note {
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-text-muted);
+    margin-top: 32px;
+  }
+
   /* ===== FAQ ===== */
   .faq { background-color: var(--color-card-bg); padding-bottom: 96px; }
   .faq__headline { margin-bottom: 40px; }
@@ -617,5 +781,6 @@ const faqItems = [
     .teachers-strip__testimonials { grid-template-columns: 1fr; gap: 24px; }
     .parents-strip__inner { grid-template-columns: 1fr; gap: 32px; }
     .parents-strip__decor { display: none; }
+    .pricing__grid { grid-template-columns: 1fr; max-width: 400px; }
   }
 </style>
