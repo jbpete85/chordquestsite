@@ -25,13 +25,17 @@ const base = import.meta.env.BASE_URL;
         </div>
         <div class="footer__col">
           <h4 class="footer__col-title">Get Started</h4>
-          <a href="https://app.chordquestmusic.com" class="btn btn--gold footer__cta">Download Free</a>
+          <a href="https://app.chordquestmusic.com" class="footer__link">Start Free Trial</a>
+          <a href="https://app.chordquestmusic.com" class="footer__appstore"><img src={`${base}images/download-appstore.svg`} alt="Download on the App Store" class="footer__appstore-img" /></a>
         </div>
       </div>
     </div>
     <div class="footer__bottom">
       <p class="footer__copy">&copy; {year} ChordQuest Music. All rights reserved.</p>
-      <p class="footer__location">Argyle, TX</p>
+      <div class="footer__bottom-right">
+        <a href={`${base}privacy`} class="footer__bottom-link">Privacy Policy</a>
+        <p class="footer__location">Argyle, TX</p>
+      </div>
     </div>
   </div>
 </footer>
@@ -44,6 +48,7 @@ const base = import.meta.env.BASE_URL;
   }
   .footer__top {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 64px;
     padding-bottom: 48px;
@@ -55,9 +60,10 @@ const base = import.meta.env.BASE_URL;
   .footer__logo {
     display: inline-block;
     text-decoration: none;
+    margin-top: -4px;
   }
   .footer__logo-img {
-    height: 160px;
+    height: 120px;
     width: auto;
   }
   .footer__tagline {
@@ -65,6 +71,19 @@ const base = import.meta.env.BASE_URL;
     line-height: 160%;
     color: var(--color-text-muted);
     margin-top: 12px;
+  }
+  .footer__appstore {
+    display: inline-block;
+    margin-top: 4px;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+  .footer__appstore:hover {
+    opacity: 1;
+  }
+  .footer__appstore-img {
+    height: 34px;
+    width: auto;
   }
   .footer__columns {
     display: flex;
@@ -94,12 +113,6 @@ const base = import.meta.env.BASE_URL;
   .footer__link:hover {
     color: var(--color-cream);
   }
-  .footer__cta {
-    margin-top: 4px;
-    padding: 10px 20px;
-    font-size: 13px;
-    text-align: center;
-  }
   .footer__bottom {
     display: flex;
     justify-content: space-between;
@@ -109,7 +122,21 @@ const base = import.meta.env.BASE_URL;
   .footer__copy,
   .footer__location {
     font-size: 12px;
-    color: rgba(138, 114, 96, 0.6);
+    color: rgba(138, 138, 138, 0.6);
+  }
+  .footer__bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer__bottom-link {
+    font-size: 12px;
+    color: rgba(138, 138, 138, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer__bottom-link:hover {
+    color: var(--color-cream);
   }
 
   @media (max-width: 768px) {
