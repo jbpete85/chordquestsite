@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jbpete85.github.io/chordquestsite/sitemap-index.xml
