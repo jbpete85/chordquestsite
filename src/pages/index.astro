@@ -28,7 +28,7 @@ const faqItems = [
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__content">
-        <h1 class="headline-xl hero__headline">Any Sheet Music.<br/>Any Instrument.<br/>Hear And Play Back Instantly.</h1>
+        <h1 class="headline-xl hero__headline">Any Sheet Music.<br/>Any Instrument.<br/>Hear And Play Back.<br/><span class="hero__gold">Instantly.</span></h1>
         <p class="body-lg hero__sub">Upload or snap a pic of any piece of sheet music. ChordQuest reads the notes and plays back your exact part in seconds&nbsp;&mdash; no library to search, no instrument limitations, no guessing how it goes.</p>
         <div class="hero__ctas">
           <a href="https://app.chordquestmusic.com" class="btn btn--gold">Get Started Free</a>
@@ -260,7 +260,7 @@ const faqItems = [
       </div>
       <div class="parents-strip__content">
         <p class="eyebrow">For Parents</p>
-        <h2 class="headline-lg">No Music Background? No Time? No Problem.</h2>
+        <h2 class="headline-lg">No Music Background?<br/>No Time?<br/><span class="text-gold">No Problem.</span></h2>
         <p class="body-lg text-warm">When students know what their part should sound like, learning music becomes more productive, and far less frustrating. With ChordQuest's sheet music playback technology, parents can confidently support their child's practice without preparation or needing to know how to read a single note.</p>
         <a href={`${base}parents`} class="btn btn--gold">Learn More</a>
       </div>
@@ -347,6 +347,9 @@ const faqItems = [
   .hero__headline {
     color: var(--color-cream);
     margin-bottom: 24px;
+  }
+  .hero__gold {
+    color: var(--color-gold);
   }
   .hero__sub {
     color: var(--color-text-muted);
