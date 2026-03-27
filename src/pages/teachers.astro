@@ -112,7 +112,7 @@ const features = [
       <form class="contact__form" action="https://formsubmit.co/hello@chordquestmusic.com" method="POST">
         <input type="hidden" name="_subject" value="Teacher Free License Request">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://jbpete85.github.io/cqsiteblackgold/teachers">
+        <input type="hidden" name="_next" value={new URL('/teachers', Astro.site).href}>
         <div class="contact__row">
           <div class="contact__field">
             <label for="contact-name" class="contact__label">Name</label>

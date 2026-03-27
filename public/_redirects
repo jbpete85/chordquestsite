@@ -1,0 +1,2 @@
+# Redirect old GitHub Pages subpath URLs
+/cqsiteblackgold/*  /:splat  301
