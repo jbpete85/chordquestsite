@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+function getReadingTime(body: string): number {
+  const words = body.split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / 250));
+}
+---
+<BaseLayout
+  title="Blog — Chord Quest"
+  description="Practice tips, teaching strategies, and music technology insights for piano and guitar teachers and students."
+  hideContactForm={true}
+>
+  <section class="blog-hero">
+    <div class="container">
+      <span class="eyebrow">Blog</span>
+      <h1 class="headline-lg">Tips, tools, and insights for music teachers</h1>
+      <p class="blog-hero__sub body-lg text-warm">Practice strategies, teaching techniques, and the technology that bridges the gap between lessons.</p>
+    </div>
+  </section>
+
+  <section class="blog-grid-section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            slug={post.id}
+            readingTime={getReadingTime(post.body ?? '')}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .blog-hero__sub {
+    max-width: 560px;
+    margin-top: 16px;
+  }
+  .blog-grid-section {
+    padding: 64px 0 96px;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
