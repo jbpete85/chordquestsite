@@ -1,0 +1,361 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+
+const base = import.meta.env.BASE_URL;
+
+const studioFaqItems = [
+  {
+    question: 'What does Chord Quest cost a studio?',
+    answer: 'Nothing. Your teachers get free access once verified, and families subscribe individually — $4.99/month for one student, or a family plan for $8.00/month. There is no studio contract and no per-seat fee.',
+  },
+  {
+    question: 'Do my teachers have to change how they teach?',
+    answer: "No. Chord Quest reads the sheet music your faculty already assigns — any publisher, any edition. Teachers keep their repertoire and methods. What changes is what happens at home between lessons.",
+  },
+  {
+    question: 'How do my teachers get set up?',
+    answer: 'Each teacher verifies their status through our teachers page and gets free access. We help with the rollout — reach out below and we will walk your faculty through it.',
+  },
+  {
+    question: 'What sheet music does it work with?',
+    answer: 'Chord Quest reads photos, PDFs, and images of sheet music, and is optimized for clean, clear beginner-level scores across piano, voice, strings, and more. It does not support handwritten notation.',
+  },
+];
+
+const benefits = [
+  {
+    title: 'Practice that works',
+    body: 'Students hear their exact part from the music your teachers assign — before frustration sets in. "I couldn\'t remember how it goes" stops being the reason a week of practice was wasted.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>`,
+  },
+  {
+    title: 'Parents who hear the difference',
+    body: 'When home practice moves the needle, parents hear it — at every lesson pickup and every recital. Lesson tuition stops feeling like a gamble, and re-enrollment stops being a question.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+  },
+  {
+    title: 'Teachers who go further',
+    body: 'Your faculty stops re-teaching last week\'s notes and spends lesson time on technique, expression, and musicality — the reasons families chose your studio in the first place.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`,
+  },
+];
+---
+<BaseLayout title="For Music Schools &amp; Studios — Chord Quest" description="Chord Quest helps private music schools and studios keep students practicing, progressing, and re-enrolling — using the sheet music your teachers already assign." hideContactForm={true}>
+
+  <!-- ===== HERO ===== -->
+  <section class="s-hero">
+    <div class="container container--narrow s-hero__inner">
+      <p class="eyebrow">For Music Schools &amp; Studios</p>
+      <h1 class="headline-xl s-hero__headline">The students who feel progress are the students who re-enroll.</h1>
+      <p class="body-lg s-hero__sub">Chord Quest gives every student in your program a way to hear exactly how their music goes at home &mdash; so practice works, parents see the value, and your enrollment holds season after season.</p>
+      <a href="#contact" class="btn btn--gold">Talk To Us About Your Studio</a>
+    </div>
+  </section>
+
+  <!-- ===== BENEFITS ===== -->
+  <section class="s-benefits section">
+    <div class="container">
+      <h2 class="headline-lg s-benefits__headline">Practice that works is why families stay.</h2>
+      <div class="s-benefits__grid">
+        {benefits.map((b) => (
+          <div class="benefit-card" tabindex="0">
+            <div class="benefit-card__icon" set:html={b.icon} />
+            <h3 class="benefit-card__title">{b.title}</h3>
+            <p class="benefit-card__body">{b.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS FOR STUDIOS ===== -->
+  <section class="s-how section">
+    <div class="container">
+      <div class="s-how__header">
+        <p class="eyebrow">How It Works</p>
+        <h2 class="headline-lg">Studio-wide in three steps.</h2>
+      </div>
+      <div class="s-how__grid">
+        <div class="s-how__card">
+          <span class="s-how__num">1</span>
+          <h3 class="s-how__title">Your teachers get free access</h3>
+          <p class="s-how__body">Every teacher on your faculty verifies their status and uses Chord Quest free. No charge, no card, no per-seat fee.</p>
+        </div>
+        <div class="s-how__card">
+          <span class="s-how__num">2</span>
+          <h3 class="s-how__title">Students scan the music you assign</h3>
+          <p class="s-how__body">Chord Quest reads directly from the sheet music your teachers already use. Nothing about your curriculum changes.</p>
+        </div>
+        <div class="s-how__card">
+          <span class="s-how__num">3</span>
+          <h3 class="s-how__title">Families subscribe</h3>
+          <p class="s-how__body">Parents pay $4.99/month &mdash; a fraction of one lesson &mdash; for practice that makes every lesson count.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STUDIO FAQ ===== -->
+  <section class="s-faq section" id="faq">
+    <div class="container container--narrow">
+      <h2 class="headline-md s-faq__headline">Questions studio owners ask.</h2>
+      <FaqAccordion items={studioFaqItems} />
+    </div>
+  </section>
+
+  <!-- ===== STUDIO CONTACT ===== -->
+  <section class="contact section" id="contact">
+    <div class="container container--narrow">
+      <p class="eyebrow">For Studios</p>
+      <h2 class="headline-lg contact__headline">Bring Chord Quest to your studio.</h2>
+      <p class="body-md contact__sub">Tell us about your school or studio and we'll help you roll it out to your faculty and families.</p>
+      <form class="contact__form" action="https://formsubmit.co/hello@chordquestmusic.com" method="POST">
+        <input type="hidden" name="_subject" value="Studio Inquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value={new URL('/studios', Astro.site).href}>
+        <div class="contact__row">
+          <div class="contact__field">
+            <label for="contact-name" class="contact__label">Name</label>
+            <input type="text" id="contact-name" name="name" required class="contact__input" placeholder="Your name">
+          </div>
+          <div class="contact__field">
+            <label for="contact-email" class="contact__label">Email</label>
+            <input type="email" id="contact-email" name="email" required class="contact__input" placeholder="you@email.com">
+          </div>
+        </div>
+        <div class="contact__row">
+          <div class="contact__field">
+            <label for="contact-studio" class="contact__label">Studio or school name</label>
+            <input type="text" id="contact-studio" name="studio" required class="contact__input" placeholder="Your studio">
+          </div>
+          <div class="contact__field">
+            <label for="contact-size" class="contact__label">How many students? <span style="font-weight:400; opacity:0.6">(optional)</span></label>
+            <select id="contact-size" name="students" class="contact__input contact__select">
+              <option value="">Select one</option>
+              <option value="under-50">Under 50 students</option>
+              <option value="50-150">50–150 students</option>
+              <option value="150-400">150–400 students</option>
+              <option value="400+">400+ students</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn--gold contact__submit">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ===== HERO ===== */
+  .s-hero {
+    background-color: var(--color-dark);
+    padding: 96px 0 112px;
+    text-align: center;
+  }
+  .s-hero__headline {
+    color: var(--color-cream);
+    margin-bottom: 24px;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .s-hero__sub {
+    color: var(--color-text-muted);
+    margin-bottom: 40px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== BENEFITS ===== */
+  .s-benefits {
+    background-color: var(--color-cream);
+  }
+  .s-benefits__headline {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .s-benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .benefit-card {
+    background: linear-gradient(145deg, rgba(217, 176, 119, 0.08), rgba(217, 176, 119, 0.03));
+    border: 1px solid rgba(217, 176, 119, 0.2);
+    border-radius: 16px;
+    padding: 36px 32px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+    outline: none;
+  }
+  .benefit-card:hover,
+  .benefit-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--color-gold);
+    box-shadow: 0 12px 40px rgba(217, 176, 119, 0.12);
+  }
+  .benefit-card__icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 20px;
+    color: var(--color-gold);
+  }
+  .benefit-card__icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .benefit-card__title {
+    font-family: var(--font-headline);
+    font-size: 20px;
+    color: var(--color-dark);
+    margin-bottom: 12px;
+  }
+  .benefit-card__body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-warm);
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  .s-how {
+    background-color: var(--color-dark);
+  }
+  .s-how__header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+  .s-how__header .headline-lg {
+    color: var(--color-cream);
+  }
+  .s-how__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .s-how__card {
+    background: rgba(217, 176, 119, 0.06);
+    border: 1px solid rgba(217, 176, 119, 0.15);
+    border-radius: 16px;
+    padding: 40px 32px;
+  }
+  .s-how__num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .s-how__title {
+    font-family: var(--font-headline);
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--color-cream);
+  }
+  .s-how__body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+  }
+
+  /* ===== FAQ ===== */
+  .s-faq {
+    background-color: var(--color-cream);
+  }
+  .s-faq__headline {
+    margin-bottom: 40px;
+  }
+
+  /* ===== CONTACT (matches teachers page) ===== */
+  .contact {
+    background-color: var(--color-card-bg);
+    padding: 100px 0;
+  }
+  .contact__headline {
+    margin-top: 12px;
+  }
+  .contact__sub {
+    color: var(--color-text-warm);
+    margin-top: 12px;
+    margin-bottom: 40px;
+  }
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+  }
+  .contact__row {
+    display: flex;
+    gap: 20px;
+  }
+  .contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .contact__label {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+  }
+  .contact__input {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: border-color 0.2s ease;
+    outline: none;
+    width: 100%;
+  }
+  .contact__input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+  .contact__input:focus {
+    border-color: var(--color-gold);
+  }
+  .contact__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238A8A8A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+  .contact__submit {
+    align-self: flex-start;
+    margin-top: 8px;
+    cursor: pointer;
+    border: none;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .s-hero {
+      padding: 64px 0 80px;
+    }
+    .s-benefits__grid,
+    .s-how__grid {
+      grid-template-columns: 1fr;
+    }
+    .contact__row {
+      flex-direction: column;
+    }
+  }
+</style>

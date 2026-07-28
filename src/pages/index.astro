@@ -28,8 +28,8 @@ const faqItems = [
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__content">
-        <h1 class="headline-xl hero__headline">Any Sheet Music.<br/>Any Instrument.<br/>Hear And Play Back.<br/><span class="hero__gold">Instantly</span></h1>
-        <p class="body-lg hero__sub">Upload or snap a pic of any piece of sheet music. Chord Quest reads the notes and plays back your exact part in seconds&nbsp;&mdash; no library to search, no instrument limitations, no guessing how it goes.</p>
+        <h1 class="headline-xl hero__headline">Any Sheet Music.<br/>Any Instrument.<br/><span class="hero__gold">Hear It. Play It.</span></h1>
+        <p class="body-lg hero__sub">Upload or snap a pic of any piece of sheet music. Chord Quest reads the notes and plays back your exact part&nbsp;&mdash; no library to search, no instrument limitations, no more guessing between lessons.</p>
         <div class="hero__ctas">
           <a href="https://app.chordquestmusic.com" class="btn btn--gold">Get Started Free</a>
           <button class="btn btn--outline" id="watch-it-work-btn">Watch It Work &rarr;</button>
@@ -194,7 +194,7 @@ const faqItems = [
       <div class="teachers-strip__content">
         <p class="eyebrow">For Teachers</p>
         <h2 class="headline-lg teachers-strip__headline">The between-lesson practice tool music students love.</h2>
-        <p class="body-lg teachers-strip__body">Give every student in your class instant playback of their exact part using the sheet music they already own. They arrive better prepared, giving you time to accomplish more in each lesson.</p>
+        <p class="body-lg teachers-strip__body">Give every student you teach playback of their exact part using the sheet music they already own. They arrive better prepared, giving you time to accomplish more in each lesson.</p>
         <a href={`${base}teachers#contact`} class="btn btn--gold">Teachers Download Free</a>
       </div>
       <div class="teachers-strip__mockup">
@@ -267,14 +267,24 @@ const faqItems = [
     </div>
   </section>
 
+  <!-- ===== FOR STUDIOS STRIP ===== -->
+  <section class="studios-strip section">
+    <div class="container container--narrow studios-strip__inner">
+      <p class="eyebrow">For Music Schools &amp; Studios</p>
+      <h2 class="headline-lg studios-strip__headline">Students who hear their progress stick around.</h2>
+      <p class="body-lg studios-strip__body">Chord Quest gives every student in your program a way to practice with confidence at home &mdash; so parents hear the difference, students keep going, and re-enrollment stops being a question.</p>
+      <a href={`${base}studios`} class="btn btn--gold">Chord Quest for Studios</a>
+    </div>
+  </section>
+
   <!-- ===== PRICING ===== -->
   <section class="pricing section" id="pricing">
     <div class="container">
       <div class="pricing__header">
         <p class="eyebrow">Pricing</p>
         <h2 class="headline-lg pricing__headline">Start free. Stay affordable.</h2>
-        <p class="body-lg text-warm pricing__sub">Every plan starts with a free 7-day trial.</p>
-        <p class="pricing__teacher-note"><strong>Chord Quest is Free Forever for Teachers</strong></p>
+        <p class="body-lg text-warm pricing__sub">Free to download with up to five scans. Pick a plan when you're ready.</p>
+        <p class="pricing__teacher-note"><strong>Chord Quest is free for music teachers</strong></p>
       </div>
       <div class="pricing__grid">
         <div class="pricing__card">
@@ -289,7 +299,7 @@ const faqItems = [
             <li>Cloud storage</li>
             <li>All instruments</li>
           </ul>
-          <a href="https://app.chordquestmusic.com" class="btn btn--gold pricing__cta">Start Free Trial</a>
+          <a href="https://app.chordquestmusic.com" class="btn btn--gold pricing__cta">Get Started Free</a>
         </div>
         <div class="pricing__card pricing__card--featured">
           <div class="pricing__badge">Popular</div>
@@ -303,10 +313,10 @@ const faqItems = [
             <li>Account management features</li>
             <li>Individual progress tracking</li>
           </ul>
-          <a href="https://app.chordquestmusic.com" class="btn btn--gold pricing__cta">Start Free Trial</a>
+          <a href="https://app.chordquestmusic.com" class="btn btn--gold pricing__cta">Get Started Free</a>
         </div>
       </div>
-      <p class="pricing__trial-note">7-day free trial on all plans. Cancel anytime.</p>
+      <p class="pricing__trial-note">Free to download with up to five scans included. Cancel anytime.</p>
     </div>
   </section>
 
@@ -632,6 +642,20 @@ const faqItems = [
   .parents-strip__content .headline-lg { margin-bottom: 24px; }
   .parents-strip__content .body-lg { margin-bottom: 16px; }
   .parents-strip__note { font-weight: 600; margin-bottom: 32px !important; }
+
+  /* ===== FOR STUDIOS STRIP ===== */
+  .studios-strip {
+    background-color: var(--color-dark);
+    text-align: center;
+  }
+  .studios-strip__headline {
+    color: var(--color-cream);
+    margin-bottom: 20px;
+  }
+  .studios-strip__body {
+    color: var(--color-text-muted);
+    margin-bottom: 32px;
+  }
 
   /* ===== PRICING ===== */
   .pricing {

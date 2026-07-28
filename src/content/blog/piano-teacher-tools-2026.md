@@ -57,7 +57,7 @@ None of these scale. And none of them solve the fundamental issue: the student h
 
 This is the single highest-leverage tool category for private teachers in 2026.
 
-**[Chord Quest](https://app.chordquestmusic.com)** — Photograph any piece of sheet music and hear the exact part played back instantly. No uploading MusicXML files, no searching a database, no subscriptions for the teacher. Point the camera, tap play.
+**[Chord Quest](https://app.chordquestmusic.com)** — Photograph any piece of sheet music and hear the exact part played back. No uploading MusicXML files, no searching a database, no subscriptions for the teacher. Point the camera, tap play.
 
 Why this matters for teachers specifically:
 
@@ -108,7 +108,7 @@ Tools are worthless if students don't use them. The workflow has to be simple en
 2. **Before the student leaves:** Have them photograph the assigned pages with their phone. If they use Chord Quest, they can hear the assignment played back immediately — right there in the lesson — so you know they have a reference.
 3. **At home:** The student opens the photo, listens once, then practices. No searching YouTube, no waiting for you to send a recording, no forgetting what the piece sounds like by Wednesday.
 
-This workflow takes 60 seconds to set up at the end of a lesson and eliminates the single biggest practice obstacle: "I don't remember how it goes."
+This workflow takes a few minutes at the end of a lesson and eliminates the single biggest practice obstacle: "I don't remember how it goes."
 
 ## What you don't need
 

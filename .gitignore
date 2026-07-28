@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# tool output / scratch (keep repo root clean)
+.playwright-mcp/

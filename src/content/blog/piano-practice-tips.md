@@ -28,7 +28,7 @@ This isn't passive. When you hear the piece first:
 - You catch accidentals and key changes that would otherwise surprise you mid-phrase
 - You build an internal reference that makes self-correction automatic
 
-If your teacher assigned a piece from a method book or ensemble arrangement, finding an accurate audio reference can be difficult. That's exactly the problem [Chord Quest](https://app.chordquestmusic.com) solves — snap a photo of any sheet music and hear your exact part played back instantly.
+If your teacher assigned a piece from a method book or ensemble arrangement, finding an accurate audio reference can be difficult. That's exactly the problem [Chord Quest](https://app.chordquestmusic.com) solves — snap a photo of any sheet music and hear your exact part played back.
 
 ## Break the piece into sections, not pages
 

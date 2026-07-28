@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL;
 const teacherFaqItems = [
   {
     question: 'Is Chord Quest really free for music teachers?',
-    answer: 'Yes. Teachers download and use Chord Quest free, forever. There is no trial, no expiration, and no catch. Students pay a small monthly subscription — teachers never pay a cent.',
+    answer: 'Yes. Verified music teachers get free access to Chord Quest — no charge and no card required. Students pay a small monthly subscription; teachers never pay a cent.',
   },
   {
     question: 'What sheet music does Chord Quest work with?',
@@ -30,8 +30,8 @@ const features = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>`,
   },
   {
-    title: '60 seconds to set up',
-    body: 'Download the app. Point at sheet music. There is no onboarding process, no curriculum to configure.',
+    title: 'Simple to start',
+    body: 'Download the app and walk through a short guided setup with real sheet music. No curriculum to configure.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
   },
   {
@@ -40,8 +40,8 @@ const features = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
   },
   {
-    title: 'Free for you. Forever.',
-    body: 'Teachers download free. Students pay a small subscription. We never charge you for it.',
+    title: 'Free for teachers',
+    body: 'Verified teachers get free access. Students pay a small subscription. We never charge you for it.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
   },
   {
@@ -51,12 +51,12 @@ const features = [
   },
   {
     title: 'Practice with their device',
-    body: 'Students can download, set up, and hear their music in seconds—right from home.',
+    body: 'Students can download, set up, and hear their music right from home.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>`,
   },
 ];
 ---
-<BaseLayout title="For Teachers — Chord Quest" description="Free for music teachers forever. Give every student instant playback of their exact part from any sheet music." hideContactForm={true}>
+<BaseLayout title="For Teachers — Chord Quest" description="Free for verified music teachers. Give every student playback of their exact part from any sheet music." hideContactForm={true}>
 
   <!-- ===== HERO ===== -->
   <section class="t-hero">
@@ -98,17 +98,18 @@ const features = [
       <p class="eyebrow">The Last Thing</p>
       <h2 class="headline-lg t-closing__headline">Don't change how you teach.</h2>
       <p class="t-closing__subline">Change what happens between lessons.</p>
-      <p class="body-lg t-closing__body">Chord Quest isn't a replacement for the magic that happens in the classroom. It's a tool to keep your students invested in their musical journey with you.</p>
+      <p class="body-lg t-closing__body">Chord Quest isn't a replacement for the magic that happens in your lessons. It's the tool that keeps students practicing &mdash; and progressing &mdash; between them.</p>
       <a href="#contact" class="btn btn--gold">Teachers Download Free</a>
+      <p class="t-closing__studio-note">Run a music school or studio? <a href={`${base}studios`}>See Chord Quest for Studios &rarr;</a></p>
     </div>
   </section>
 
   <!-- ===== TEACHER CONTACT FORM ===== -->
   <section class="contact section" id="contact">
     <div class="container container--narrow">
-      <p class="eyebrow">Free Forever for Teachers</p>
-      <h2 class="headline-lg contact__headline">Claim Your Free Chord Quest License Today</h2>
-      <p class="body-md contact__sub">Tell us about your studio and we'll reach out to get you set up.</p>
+      <p class="eyebrow">Free for Music Teachers</p>
+      <h2 class="headline-lg contact__headline">Chord Quest is free for music teachers.</h2>
+      <p class="body-md contact__sub">Tell us about your teaching and we'll get you set up.</p>
       <form class="contact__form" action="https://formsubmit.co/hello@chordquestmusic.com" method="POST">
         <input type="hidden" name="_subject" value="Teacher Free License Request">
         <input type="hidden" name="_captcha" value="false">
@@ -242,6 +243,18 @@ const features = [
   .t-closing__body {
     color: var(--color-text-muted);
     margin-bottom: 40px;
+  }
+  .t-closing__studio-note {
+    margin-top: 28px;
+    font-size: 14px;
+    color: var(--color-text-muted);
+  }
+  .t-closing__studio-note a {
+    color: var(--color-gold);
+    text-decoration: none;
+  }
+  .t-closing__studio-note a:hover {
+    text-decoration: underline;
   }
 
   /* ===== TEACHER CONTACT FORM (cream — matches home page) ===== */
